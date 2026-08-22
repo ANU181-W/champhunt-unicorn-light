@@ -1,0 +1,2678 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Champhunt — Unicorns Light Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Barlow:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@600;700&family=Caveat+Brush&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CHAMPHUNT × SF UNICORNS — LIGHT THEME
+   navy = Pacific · orange = Golden Gate · light blue = SF Bay
+   ============================================================ */
+:root{
+  --paper:#FFFFFF;
+  --haze:#F5F8FC;
+  --sky-1:#CBE7F5;
+  --sky-2:#F8FCFE;
+  --navy:#132B4A;
+  --navy-2:#0B1D35;
+  --ink:#16283F;
+  --slate:#607691;
+  --line:#DFE7F0;
+  --gate:#F4681F;
+  --gate-hot:#FF8038;
+  --bay:#29ABE2;
+  --win:#12A06B;
+  --void:#E0930A;
+
+  --f-display:'Archivo', Impact, sans-serif;
+  --f-body:'Barlow', system-ui, -apple-system, sans-serif;
+  --f-label:'Barlow Semi Condensed', 'Barlow', sans-serif;
+  --f-brush:'Caveat Brush', cursive;
+  --f-data:'IBM Plex Mono', ui-monospace, monospace;
+
+  --shadow:0 1px 2px rgba(19,43,74,.06), 0 8px 24px -16px rgba(19,43,74,.28);
+  --r:10px;
+  --sidebar:244px;
+  --topbar:66px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--f-body);font-size:15px;line-height:1.58;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;color:inherit;background:none;border:none;cursor:pointer}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--bay);outline-offset:2px}
+
+/* ---------- type ---------- */
+.display{
+  font-family:var(--f-display);font-style:italic;font-weight:800;
+  font-stretch:88%;text-transform:uppercase;line-height:1.02;letter-spacing:-.005em;
+}
+.brush{font-family:var(--f-brush);color:var(--gate);line-height:1;transform:rotate(-2deg);display:inline-block}
+.data{font-family:var(--f-data);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-label);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.2em;color:var(--gate)}
+
+/* signature: the kit stripe */
+.stripe{
+  height:4px;flex:none;
+  background:repeating-linear-gradient(115deg,var(--gate) 0 16px,transparent 16px 24px,var(--bay) 24px 34px,transparent 34px 50px);
+}
+/* signature: orange swash under a name */
+.swash{position:relative;display:inline-block}
+.swash::after{
+  content:"";position:absolute;left:0;right:-6px;bottom:-2px;height:4px;
+  background:var(--gate);transform:skewX(-18deg);
+}
+
+/* ============================================================ TOP BAR */
+.topbar{
+  position:sticky;top:0;z-index:60;height:var(--topbar);
+  background:var(--navy);border-bottom:3px solid var(--gate);
+  display:flex;align-items:center;gap:20px;padding:0 22px;color:#fff;
+}
+.brand{display:flex;align-items:center;gap:11px;min-width:calc(var(--sidebar) - 22px)}
+.brand-mark{
+  width:36px;height:36px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(150deg,var(--gate),#D4451A);
+  clip-path:polygon(50% 0,100% 26%,100% 74%,50% 100%,0 74%,0 26%);
+  font-family:var(--f-display);font-style:italic;font-weight:900;font-size:17px;color:#fff;
+}
+.brand-txt small{display:block;font-family:var(--f-label);font-weight:700;font-size:10px;letter-spacing:.26em;color:var(--bay)}
+.brand-txt b{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:21px;text-transform:uppercase;letter-spacing:.01em}
+.search{flex:1;max-width:460px;position:relative}
+.search input{
+  width:100%;height:38px;padding:0 14px 0 38px;border-radius:4px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);
+  color:#fff;font-family:var(--f-body);font-size:14px;
+}
+.search input::placeholder{color:rgba(255,255,255,.55)}
+.search svg{position:absolute;left:12px;top:11px;color:rgba(255,255,255,.6)}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.bell{position:relative;width:34px;height:34px;display:grid;place-items:center;color:rgba(255,255,255,.8)}
+.bell b{position:absolute;top:-1px;right:-1px;background:var(--gate);font-family:var(--f-data);font-size:10px;line-height:15px;min-width:15px;text-align:center;border-radius:8px}
+.runs-chip{display:flex;align-items:center;gap:7px;height:34px;padding:0 13px;border-radius:4px;background:rgba(244,104,31,.18);border:1px solid var(--gate)}
+.runs-chip i{width:14px;height:14px;border-radius:50%;background:linear-gradient(140deg,var(--gate),var(--gate-hot))}
+.runs-chip span{font-family:var(--f-data);font-weight:600;font-size:13px}
+.avatar{
+  width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--bay),#1173A6);color:#fff;
+  font-family:var(--f-label);font-weight:700;font-size:13px;
+}
+
+/* ============================================================ SHELL */
+.shell{display:flex;align-items:flex-start;min-height:calc(100vh - var(--topbar))}
+.sidebar{
+  width:var(--sidebar);flex:none;position:sticky;top:var(--topbar);
+  height:calc(100vh - var(--topbar));overflow-y:auto;
+  background:var(--paper);border-right:1px solid var(--line);padding:16px 12px 40px;
+}
+.nav-item{
+  display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;margin-bottom:2px;
+  font-family:var(--f-label);font-weight:700;font-size:15px;text-transform:uppercase;
+  letter-spacing:.07em;color:var(--slate);border-left:3px solid transparent;text-align:left;
+}
+.nav-item:hover{background:var(--haze);color:var(--navy)}
+.nav-item.is-active{background:var(--haze);color:var(--navy);border-left-color:var(--gate)}
+.nav-item.is-active svg{color:var(--gate)}
+.nav-item[disabled]{opacity:.42;cursor:not-allowed}
+.nav-item[disabled]:hover{background:none;color:var(--slate)}
+.nav-item .soon{
+  margin-left:auto;padding:2px 7px;border-radius:3px;background:var(--haze);
+  font-family:var(--f-label);font-weight:700;font-size:9.5px;letter-spacing:.14em;color:var(--slate);
+}
+.vip{margin:16px 2px;padding:15px;border-radius:var(--r);background:linear-gradient(160deg,#16304F,#0B1D35);color:#fff}
+.vip p{font-family:var(--f-label);font-size:13.5px;color:#B9CBDE;margin-bottom:10px}
+.vip button{width:100%;padding:9px;border-radius:3px;background:var(--gate);color:#fff;font-family:var(--f-label);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.vip button:hover{background:var(--gate-hot)}
+.vip.is-disabled{opacity:.5}
+.vip.is-disabled button,
+.vip.is-disabled button:hover{background:#6E7C8E;cursor:not-allowed}
+.nav-head{font-family:var(--f-label);font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#95A7BB;padding:16px 14px 6px}
+.nav-sub{display:block;width:100%;text-align:left;padding:7px 14px;font-size:14px;color:var(--slate)}
+.nav-sub:hover{color:var(--gate)}
+
+.main{flex:1;min-width:0;padding:26px 30px 90px;max-width:1240px}
+.view{display:none}
+.view.is-active{display:block;animation:rise .26s ease-out}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.page-head{margin-bottom:20px}
+.page-head .brush{font-size:30px;margin-bottom:2px}
+.page-head h1{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:clamp(28px,4vw,42px);text-transform:uppercase;color:var(--navy);line-height:1}
+.page-head p{color:var(--slate);margin-top:9px;max-width:62ch}
+.grid-rail{display:grid;grid-template-columns:minmax(0,1fr) 322px;gap:24px;align-items:start}
+
+.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.card-head h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:17px;text-transform:uppercase;color:var(--navy)}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:11px 22px;border-radius:3px;
+  font-family:var(--f-label);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.12em;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.btn--gate{background:var(--gate);color:#fff}
+.btn--gate:hover{background:var(--gate-hot)}
+.btn--navy{background:var(--navy);color:#fff}
+.btn--navy:hover{background:#1C3D68}
+.btn--ghost{border:1.5px solid var(--line);color:var(--navy)}
+.btn--ghost:hover{border-color:var(--gate);color:var(--gate)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn--sm{padding:8px 15px;font-size:12px}
+
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.tab{
+  padding:9px 18px;border:1.5px solid var(--line);border-radius:3px;background:var(--paper);
+  font-family:var(--f-label);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.12em;color:var(--slate);
+}
+.tab:hover{border-color:var(--bay);color:var(--navy)}
+.tab.is-on{background:var(--gate);border-color:var(--gate);color:#fff}
+
+.live-dot{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gate)}
+.live-dot i{width:7px;height:7px;border-radius:50%;background:var(--gate);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+
+.note-strip{
+  display:flex;gap:10px;align-items:flex-start;padding:11px 14px;margin-bottom:18px;border-radius:6px;
+  background:rgba(224,147,10,.09);border-left:3px solid var(--void);font-size:13.5px;color:#7A5A12;
+}
+
+/* ============================================================ PITCH */
+.stories{display:flex;gap:16px;overflow-x:auto;padding:2px 2px 12px}
+.story{width:76px;flex:none;text-align:center;background:none}
+.story i{
+  display:grid;place-items:center;width:68px;height:68px;margin:0 auto 7px;border-radius:50%;
+  background:linear-gradient(150deg,#16304F,#0B1D35);border:3px solid var(--gate);
+  font-family:var(--f-display);font-style:italic;font-weight:800;font-size:22px;color:#fff;
+}
+.story--add i{background:var(--haze);border:2px dashed var(--line);color:var(--slate)}
+.story span{font-family:var(--f-label);font-size:12px;color:var(--slate);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.hero{
+  position:relative;overflow:hidden;border-radius:var(--r);margin-bottom:16px;
+  background:linear-gradient(165deg,var(--sky-1) 0%,var(--sky-2) 62%,#fff 100%);
+  border:1px solid var(--line);
+  display:grid;grid-template-columns:1fr 38%;gap:20px;align-items:center;padding:16px 20px;
+}
+.hero-copy .brush{font-size:21px;margin-bottom:0}
+.hero-copy h2{
+  font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;
+  font-size:clamp(19px,2.1vw,26px);text-transform:uppercase;color:var(--navy);line-height:1.08;
+}
+.hero-copy p{
+  color:#3F5670;font-size:13px;line-height:1.45;margin:7px 0 11px;max-width:58ch;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+}
+.hero-stats{display:flex;gap:20px;margin-top:12px;flex-wrap:wrap}
+.hero-stat b{display:block;font-family:var(--f-data);font-weight:600;font-size:16px;line-height:1.15;color:var(--gate)}
+.hero-stat span{font-family:var(--f-label);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.hero-shot{
+  border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;max-height:148px;position:relative;
+  background:radial-gradient(120% 100% at 50% 100%,#1E4472,#0A1B31);
+  display:grid;place-items:end center;
+}
+.hero-shot .fig{width:36%;color:var(--gate)}
+.hero-shot .wm{
+  position:absolute;left:14px;top:2px;font-family:var(--f-display);font-style:italic;font-weight:900;
+  font-size:42px;color:rgba(255,255,255,.1);line-height:1;
+}
+
+/* story creator */
+.seg{display:inline-flex;gap:7px;margin-bottom:16px}
+.seg button{padding:9px 17px;border:1.5px solid var(--line);border-radius:4px;font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate)}
+.seg button:hover{border-color:var(--gate);color:var(--gate)}
+.seg button.is-on,.seg button.is-on:hover{background:var(--gate);border-color:var(--gate);color:#fff}
+.dropzone{
+  display:grid;place-items:center;gap:4px;width:100%;min-height:196px;padding:20px;
+  border:2px dashed var(--line);border-radius:8px;background:var(--haze);text-align:center;
+}
+.dropzone:hover{border-color:var(--gate);background:#FFF6F1}
+.dropzone.is-over{border-color:var(--gate);background:#FFF1E8}
+.dz-icon{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:var(--paper);border:1px solid var(--line);color:var(--gate)}
+.dropzone b{font-family:var(--f-label);font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--navy)}
+.dropzone span{font-size:13px;color:var(--slate)}
+.preview-wrap{position:relative;display:flex;justify-content:center;padding:8px 0}
+.preview-wrap img,.preview-wrap video{max-height:230px;max-width:100%;border-radius:8px;border:1px solid var(--line)}
+.media-remove{
+  position:absolute;top:0;right:0;width:30px;height:30px;border-radius:4px;
+  background:#C0392B;color:#fff;font-size:15px;line-height:1;
+}
+.media-remove:hover{background:#A93226}
+.modal-foot{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:18px;padding-top:15px;border-top:1px solid var(--line)}
+.modal-foot small{font-size:12.5px;color:var(--slate)}
+.story i.has-img{padding:0;overflow:hidden;background:none}
+.story i.has-img img{width:100%;height:100%;object-fit:cover}
+
+/* composer extras */
+.composer-attach{position:relative;display:inline-block;margin-top:12px}
+.composer-attach img{max-height:150px;border-radius:6px;border:1px solid var(--line);display:block}
+.poll-fields{display:none;flex-direction:column;gap:8px;margin-top:12px;max-width:420px}
+.poll-fields.is-on{display:flex}
+.poll-fields input{height:38px;padding:0 12px;border:1px solid var(--line);border-radius:4px;background:var(--haze);font-family:var(--f-body);font-size:14px;color:var(--ink)}
+.composer-bar{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.composer-bar .btn{margin-left:auto}
+.composer-actions button.is-on{color:var(--gate);background:var(--haze)}
+.post-media img{width:100%;height:100%;object-fit:cover}
+.poll-view{display:flex;flex-direction:column;gap:7px;padding:0 16px 14px}
+.poll-view div{padding:10px 13px;border:1.5px solid var(--line);border-radius:4px;font-family:var(--f-label);font-weight:700;font-size:14px;color:var(--navy)}
+
+.composer{padding:16px;margin-bottom:18px}
+.composer-top{display:flex;gap:12px;align-items:center}
+.composer input{flex:1;height:44px;padding:0 14px;border-radius:4px;background:var(--haze);border:1px solid var(--line);font-family:var(--f-body);font-size:15px;color:var(--ink)}
+.composer-actions{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.composer-actions button{padding:8px 13px;border-radius:3px;font-family:var(--f-label);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate)}
+.composer-actions button:hover{color:var(--gate);background:var(--haze)}
+
+.switch{display:flex;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-bottom:18px;background:var(--paper)}
+.switch button{flex:1;padding:13px;font-family:var(--f-label);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:var(--slate);border-bottom:3px solid transparent}
+.switch button.is-on{color:var(--navy);border-bottom-color:var(--gate);background:var(--haze)}
+
+.post{margin-bottom:16px;overflow:hidden}
+.post-flag{display:flex;align-items:center;gap:8px;padding:9px 16px;background:linear-gradient(90deg,rgba(244,104,31,.14),transparent);border-bottom:1px solid var(--line);font-family:var(--f-label);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--gate)}
+.post-head{display:flex;align-items:center;gap:12px;padding:15px 16px}
+.post-head .avatar{width:42px;height:42px;font-size:15px}
+.post-id b{display:block;font-family:var(--f-label);font-weight:700;font-size:15px;color:var(--navy)}
+.post-id span{font-size:12.5px;color:var(--slate)}
+.post-head .btn{margin-left:auto}
+.post-body{padding:0 16px 14px;color:#2C4159}
+.post-media{
+  position:relative;height:210px;margin:0 16px 14px;border-radius:8px;overflow:hidden;
+  background:radial-gradient(110% 110% at 50% 100%,#1E4472,#0A1B31);
+  display:grid;place-items:end center;
+}
+.post-media .fig{width:150px;color:var(--gate);opacity:.95}
+.post-media .cap{
+  position:absolute;left:14px;top:12px;font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;
+  font-size:19px;text-transform:uppercase;color:#fff;max-width:70%;line-height:1.1;
+}
+.post-stats{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:9px 16px;border-top:1px solid var(--line);
+  font-family:var(--f-label);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--slate);
+}
+.post-stats .runs-count{color:var(--navy)}
+.post-stats .runs-count b{font-family:var(--f-data);font-weight:600}
+.post-stats .cmt-count{color:var(--bay);cursor:pointer}
+.post-stats .cmt-count:hover{color:var(--gate)}
+.post-foot{display:flex;padding:4px 6px;border-top:1px solid var(--line)}
+.post-foot button{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:9px 4px;border-radius:4px;
+  font-family:var(--f-label);font-weight:700;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.1em;color:var(--slate);
+}
+.post-foot button:hover{color:var(--gate);background:var(--haze)}
+.post-foot button svg{width:19px;height:19px}
+.post-foot button.is-on{color:var(--gate)}
+.post-foot button.is-on.act-repost{color:var(--win)}
+.post{position:relative}
+.post-foot{position:relative}
+.runs-pop{
+  position:absolute;bottom:calc(100% + 8px);left:6px;z-index:20;
+  padding:12px 14px;border-radius:8px;background:var(--paper);
+  border:1px solid var(--line);box-shadow:0 14px 30px -12px rgba(19,43,74,.45);
+  animation:rise .18s ease-out;
+}
+.runs-pop b{display:block;margin-bottom:9px;font-family:var(--f-label);font-weight:700;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate)}
+.coin-row{display:flex;gap:12px}
+.coin{
+  width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-data);font-weight:600;font-size:15px;color:#fff;
+  border:2px solid rgba(255,255,255,.65);box-shadow:0 2px 7px rgba(19,43,74,.28);
+  transition:transform .12s;
+}
+.coin:hover{transform:translateY(-3px) scale(1.06)}
+.coin-2{background:linear-gradient(150deg,#F0B429,#CE9110)}
+.coin-4{background:linear-gradient(150deg,var(--gate),#CF4E12)}
+.coin-6{background:linear-gradient(150deg,var(--bay),#0F7BAE)}
+.coin-burst{
+  position:absolute;left:50%;top:42%;z-index:30;pointer-events:none;
+  width:74px;height:74px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-data);font-weight:600;font-size:29px;color:#fff;
+  border:3px solid rgba(255,255,255,.8);box-shadow:0 10px 26px rgba(19,43,74,.4);
+  animation:burst 1s ease-out forwards;
+}
+@keyframes burst{
+  0%{transform:translate(-50%,-50%) scale(.3);opacity:0}
+  22%{transform:translate(-50%,-50%) scale(1.14);opacity:1}
+  68%{transform:translate(-50%,-50%) scale(1);opacity:1}
+  100%{transform:translate(-50%,-105%) scale(.92);opacity:0}
+}
+.act-runs.is-on,.act-comment.is-on{background:var(--haze)}
+.act-runs .mini-coin{
+  width:19px;height:19px;border-radius:50%;display:grid;place-items:center;
+  font-family:var(--f-data);font-weight:600;font-size:11px;color:#fff;border:1.5px solid rgba(255,255,255,.7);
+}
+/* profile */
+.pf-cover{
+  position:relative;height:236px;border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(100deg,#132B4A,#26507F);
+}
+.pf-cover::after{
+  content:"";position:absolute;right:-40px;top:-30px;width:320px;height:320px;
+  background:repeating-linear-gradient(115deg,rgba(244,104,31,.5) 0 16px,transparent 16px 26px,rgba(41,171,226,.38) 26px 36px,transparent 36px 54px);
+  transform:rotate(8deg);opacity:.55;
+}
+.pf-cover .pf-back{
+  position:absolute;left:14px;top:14px;z-index:2;width:34px;height:34px;display:grid;place-items:center;
+  border-radius:4px;background:rgba(11,29,53,.55);color:#fff;font-size:16px;
+}
+.pf-cover .pf-back:hover{background:var(--gate)}
+.pf-grid{display:grid;grid-template-columns:minmax(0,1fr) 262px;gap:22px;align-items:start}
+.pf-headrow{display:flex;align-items:flex-end;gap:18px;flex-wrap:wrap;margin:-56px 0 0;padding:0 4px;position:relative;z-index:2}
+.pf-avatar{
+  width:112px;height:112px;flex:none;border-radius:50%;position:relative;
+  display:grid;place-items:center;border:4px solid var(--paper);
+  background:linear-gradient(145deg,var(--bay),#0F7BAE);color:#fff;
+  font-family:var(--f-display);font-style:italic;font-weight:800;font-size:40px;
+}
+.pf-cam{
+  position:absolute;right:2px;bottom:6px;width:28px;height:28px;border-radius:50%;
+  background:var(--gate);color:#fff;font-size:13px;display:grid;place-items:center;border:2px solid var(--paper);
+}
+.pf-cam:hover{background:var(--gate-hot)}
+.pf-name{flex:1;min-width:200px;padding-bottom:6px}
+.pf-name h2{
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap;
+  font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;
+  font-size:27px;text-transform:uppercase;color:var(--navy);line-height:1.05;
+}
+.verified{width:19px;height:19px;border-radius:50%;background:var(--bay);color:#fff;display:grid;place-items:center;font-size:11px}
+.runs-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:20px;
+  background:rgba(244,104,31,.12);border:1px solid var(--gate);
+  font-family:var(--f-data);font-weight:600;font-size:12px;color:var(--gate);
+}
+.pf-name .handle{font-family:var(--f-data);font-size:13px;color:var(--slate);margin-top:3px}
+.pf-headrow .btn{margin-bottom:8px}
+.pf-counts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.pf-count{
+  padding:14px;text-align:center;border:1px solid var(--line);border-radius:var(--r);
+  background:var(--paper);box-shadow:var(--shadow);
+}
+.pf-count b{display:block;font-family:var(--f-data);font-weight:600;font-size:22px;color:var(--navy);line-height:1.2}
+.pf-count span{font-family:var(--f-label);font-weight:700;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.pf-seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);margin-bottom:18px}
+.pf-seg button{
+  padding:12px;font-family:var(--f-label);font-weight:700;font-size:13.5px;
+  text-transform:uppercase;letter-spacing:.12em;color:var(--slate);
+}
+.pf-seg button:hover{background:var(--haze);color:var(--navy)}
+.pf-seg button.is-on{background:var(--gate);color:#fff}
+.pf-empty{padding:38px 16px;text-align:center;color:var(--slate)}
+.pymk{padding:16px}
+.pymk h3{font-family:var(--f-label);font-weight:700;font-size:14.5px;color:var(--navy);margin-bottom:12px}
+.pymk-row{display:flex;align-items:center;gap:10px;padding:9px 0}
+.pymk-row .avatar{width:34px;height:34px;font-size:13px;flex:none}
+.pymk-id{flex:1;min-width:0}
+.pymk-id b{display:block;font-family:var(--f-label);font-weight:700;font-size:13.5px;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pymk-id span{font-family:var(--f-data);font-size:11.5px;color:var(--slate)}
+.pymk .btn{width:100%;margin-top:12px}
+.pf-seg-note{font-size:13px;color:var(--slate);padding:0 2px 10px}
+
+@media (max-width:980px){
+  .pf-grid{grid-template-columns:minmax(0,1fr)}
+  .pf-cover{height:180px}
+  .pf-headrow{margin-top:-46px}
+  .pf-avatar{width:92px;height:92px;font-size:32px}
+}
+
+/* runs history */
+.rh-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.rh-back{width:34px;height:34px;display:grid;place-items:center;border:1px solid var(--line);border-radius:4px;color:var(--slate)}
+.rh-back:hover{border-color:var(--gate);color:var(--gate)}
+.rh-head h1{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:30px;text-transform:uppercase;color:var(--navy)}
+.rh-grid{display:grid;grid-template-columns:262px minmax(0,1fr);gap:22px;align-items:start}
+.bal-card{padding:18px}
+.bal-card .eyebrow{color:var(--slate);margin-bottom:6px}
+.bal-big{font-family:var(--f-data);font-weight:600;font-size:30px;color:var(--navy);line-height:1.1;word-break:break-all}
+.bal-big em{font-style:normal;font-family:var(--f-label);font-size:14px;color:var(--slate);margin-left:5px}
+.bal-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--line);margin-top:14px}
+.bal-row:first-of-type{margin-top:16px}
+.bal-row span{display:flex;align-items:center;gap:8px;font-family:var(--f-label);font-weight:700;font-size:13.5px;color:var(--slate)}
+.bal-row b{font-family:var(--f-data);font-weight:600;font-size:14px}
+.bal-row .up{color:var(--win)}
+.bal-row .down{color:#C0392B}
+.rh-filters{margin-top:18px;padding:8px}
+.rh-filters button{
+  display:block;width:100%;text-align:center;padding:11px;border-radius:4px;
+  font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--slate);
+}
+.rh-filters button:hover{background:var(--haze);color:var(--navy)}
+.rh-filters button.is-on{background:var(--gate);color:#fff}
+.tx-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.tx-head h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:17px;text-transform:uppercase;color:var(--navy)}
+.tx-head small{font-family:var(--f-data);font-size:12px;color:var(--slate)}
+.tx-day{padding:11px 16px 7px;font-family:var(--f-label);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);background:var(--haze)}
+.tx{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.tx:last-child{border-bottom:none}
+.tx-ic{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:6px;font-size:15px}
+.tx-ic.earn{background:rgba(18,160,107,.13);color:var(--win)}
+.tx-ic.spend{background:rgba(192,57,43,.11);color:#C0392B}
+.tx-main{flex:1;min-width:0}
+.tx-main b{display:block;font-family:var(--f-label);font-weight:700;font-size:14.5px;color:var(--navy)}
+.tx-main span{font-size:12.5px;color:var(--slate)}
+.tx-main span i{font-style:normal;font-family:var(--f-data)}
+.tx-right{text-align:right;flex:none}
+.tx-right b{display:block;font-family:var(--f-data);font-weight:600;font-size:14.5px}
+.tx-right b.up{color:var(--win)}
+.tx-right b.down{color:#C0392B}
+.tx-right span{font-family:var(--f-data);font-size:11px;color:var(--slate)}
+.tx-empty{padding:40px 16px;text-align:center;color:var(--slate)}
+@media (max-width:860px){
+  .rh-grid{grid-template-columns:minmax(0,1fr)}
+  .rh-filters{display:flex;gap:6px;padding:6px}
+  .rh-filters button{flex:1}
+}
+
+.btn--sm[data-follow]{min-width:96px}
+.btn[data-follow].is-following,
+.btn[data-follow].is-following:hover{
+  background:none;border:1.5px solid var(--win);color:#0B7A50;
+}
+.btn[data-follow].is-following::before{content:"✓";margin-right:6px;font-size:12px}
+
+/* repost with thoughts */
+.rp-me{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rp-me b{font-family:var(--f-label);font-weight:700;font-size:14.5px;color:var(--navy)}
+.rp-text{
+  width:100%;min-height:78px;padding:11px 13px;border:1px solid var(--line);border-radius:5px;
+  background:var(--paper);font-family:var(--f-body);font-size:14.5px;color:var(--ink);resize:vertical;
+}
+.rp-text:focus{border-color:var(--gate);outline:none}
+.quote{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--haze);margin-top:14px}
+.quote-head{display:flex;align-items:center;gap:9px;padding:11px 13px 6px}
+.quote-head .avatar{width:28px;height:28px;font-size:11px}
+.quote-head b{font-family:var(--f-label);font-weight:700;font-size:13.5px;color:var(--navy)}
+.quote-head span{font-family:var(--f-data);font-size:11px;color:var(--slate)}
+.quote p{padding:0 13px 11px;font-size:13.5px;line-height:1.45;color:#3F5670}
+.quote .post-media{height:130px;margin:0 13px 13px;border-radius:6px}
+.quote .post-media .cap{font-size:14px}
+.quote .post-media .fig{width:90px}
+.rp-foot{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.rp-foot small{flex:1;font-size:12.5px;color:var(--slate)}
+.emoji-btn{font-size:17px;line-height:1;padding:4px}
+.emoji-row{display:none;gap:6px;margin-top:10px}
+.emoji-row.is-on{display:flex}
+.emoji-row button{font-size:19px;padding:4px 6px;border-radius:4px}
+.emoji-row button:hover{background:var(--haze)}
+.post .quote{margin:0 16px 14px}
+
+.cmt-compose{display:flex;gap:10px;align-items:center}
+.cmt-compose input{
+  flex:1;height:40px;padding:0 13px;border:1px solid var(--line);border-radius:4px;
+  background:var(--paper);font-family:var(--f-body);font-size:14px;color:var(--ink);
+}
+.cmt-compose input:focus{border-color:var(--gate)}
+.cmt-tools{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 2px;padding-left:40px}
+.gif-btn{font-family:var(--f-label);font-weight:700;font-size:12px;letter-spacing:.14em;color:var(--slate)}
+.gif-btn:hover{color:var(--gate)}
+.cmt{display:flex;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+.cmt-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.cmt-time{font-family:var(--f-data);font-size:11.5px;color:var(--slate);white-space:nowrap}
+.cmt-reply{margin-top:5px;font-family:var(--f-label);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--slate)}
+.cmt-reply:hover{color:var(--gate)}
+.post-comments{display:none;padding:12px 16px 14px;border-top:1px solid var(--line);background:var(--haze)}
+.post-comments.is-open{display:block}
+.cmt{display:flex;gap:10px;padding:8px 0}
+.cmt .avatar{width:30px;height:30px;font-size:12px;flex:none}
+.cmt-body{flex:1;min-width:0}
+.cmt-body b{font-family:var(--f-label);font-weight:700;font-size:13.5px;color:var(--navy)}
+.cmt-body p{font-size:13.5px;color:#3F5670;line-height:1.45}
+.rail{display:flex;flex-direction:column;gap:18px}
+.rail-q{padding:15px 16px;font-size:14.5px;font-weight:500;color:var(--navy);line-height:1.45}
+.split-bar{height:7px;border-radius:4px;background:var(--haze);overflow:hidden;display:flex}
+.split-bar i:first-child{background:var(--bay)}
+.split-bar i:last-child{background:var(--gate)}
+.split-legend{display:flex;justify-content:space-between;margin-top:7px;font-family:var(--f-data);font-size:11px;color:var(--slate)}
+.rail-split{padding:0 16px 14px}
+.rail-opts{display:flex;flex-direction:column;gap:8px;padding:0 16px 14px}
+.rail-opt{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 13px;border:1.5px solid var(--line);border-radius:4px;text-align:left;font-family:var(--f-label);font-weight:700;font-size:13.5px;color:var(--navy)}
+.rail-opt:hover{border-color:var(--gate);background:var(--haze)}
+.rail-opt em{font-style:normal;font-family:var(--f-data);font-size:12px;color:var(--gate)}
+.rail-foot{padding:11px 16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.rail-foot span{font-size:12px;color:var(--slate)}
+.rail-foot a{font-family:var(--f-label);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gate)}
+.lb-row{display:flex;align-items:center;gap:11px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.lb-row:last-child{border-bottom:none}
+.lb-rank{width:23px;height:23px;flex:none;display:grid;place-items:center;border-radius:3px;background:var(--haze);color:var(--slate);font-family:var(--f-data);font-weight:600;font-size:12px}
+.lb-row:nth-child(2) .lb-rank{background:var(--gate);color:#fff}
+.lb-row:nth-child(3) .lb-rank{background:var(--bay);color:#fff}
+.lb-row .avatar{width:30px;height:30px;font-size:12px}
+.lb-name{flex:1;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb-runs{font-family:var(--f-data);font-size:13px;color:var(--navy)}
+.mini-tabs{display:flex;gap:3px}
+.mini-tabs button{padding:5px 10px;border-radius:3px;font-family:var(--f-label);font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate)}
+.mini-tabs button.is-on{background:var(--haze);color:var(--gate)}
+
+/* ============================================================ PREDICTIONS */
+.pred-list{display:flex;flex-direction:column;gap:16px;max-width:860px}
+.pred-card{overflow:hidden}
+.pred-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:11px 18px;background:var(--haze);border-bottom:1px solid var(--line)}
+.pred-matchup{font-family:var(--f-label);font-weight:700;font-size:13px;letter-spacing:.08em;color:var(--navy)}
+.pred-matchup em{font-style:normal;color:var(--slate);font-size:11px;letter-spacing:.16em;margin:0 6px}
+.pred-clock{margin-left:auto;text-align:right}
+.pred-clock b{display:block;font-family:var(--f-data);font-weight:600;font-size:15px;color:var(--navy)}
+.pred-clock span{font-family:var(--f-label);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate)}
+.pred-q{padding:18px 18px 4px;font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:21px;line-height:1.14;text-transform:uppercase;color:var(--navy)}
+.pred-opts{display:flex;flex-direction:column;gap:9px;padding:14px 18px}
+.opt{text-align:left;padding:14px 16px;border:1.5px solid var(--line);border-radius:5px;background:var(--paper);transition:border-color .15s,transform .12s,background .15s}
+.opt:hover{border-color:var(--bay);transform:translateX(3px)}
+.opt.is-picked{border-color:var(--gate);background:rgba(244,104,31,.07)}
+.opt-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.opt-line b{font-family:var(--f-label);font-weight:700;font-size:15px;color:var(--navy)}
+.opt-stake{display:block;margin-top:4px;font-family:var(--f-data);font-size:12px;color:var(--gate)}
+.tag-ai{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border:1px solid var(--bay);border-radius:3px;color:var(--bay);font-family:var(--f-label);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.12em}
+.pred-split{padding:0 18px 14px}
+.pred-foot{padding:11px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--slate)}
+.pred-foot .state{font-family:var(--f-data);font-size:12.5px;color:var(--navy)}
+/* one-at-a-time deck */
+.pred-progress{display:flex;align-items:center;gap:14px;margin-bottom:14px;max-width:860px}
+.pred-progress span{font-family:var(--f-label);font-weight:700;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--slate);white-space:nowrap}
+.pred-progress span b{font-family:var(--f-data);color:var(--navy)}
+.qbar{flex:1;height:4px;border-radius:2px;background:var(--haze);overflow:hidden}
+.qbar i{display:block;height:100%;background:var(--gate);transition:width .3s ease}
+.pred-card{animation:rise .26s ease-out}
+.pred-result{padding:18px}
+.res-row{margin-bottom:13px}
+.res-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:6px}
+.res-top b{font-family:var(--f-label);font-weight:700;font-size:14px;color:var(--slate);line-height:1.3}
+.res-top em{font-style:normal;font-family:var(--f-data);font-weight:600;font-size:14px;color:var(--slate)}
+.res-row.is-mine .res-top b,.res-row.is-mine .res-top em{color:var(--navy)}
+.res-bar{height:9px;border-radius:5px;background:var(--haze);overflow:hidden}
+.res-bar i{display:block;height:100%;background:#C8D5E4;transition:width .5s ease}
+.res-row.is-mine .res-bar i{background:linear-gradient(90deg,var(--gate),#FF9A4D)}
+.res-votes{font-family:var(--f-data);font-size:12px;color:var(--slate);margin:2px 0 16px}
+.btn--next{width:100%;padding:14px;background:linear-gradient(90deg,var(--gate),#FF9A4D);color:#fff}
+.btn--next:hover{background:linear-gradient(90deg,#E85D14,#FF8A3D)}
+.pred-done{padding:30px;text-align:center;max-width:860px}
+.pred-done h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:26px;text-transform:uppercase;color:var(--navy)}
+.pred-done p{color:var(--slate);margin:8px auto 18px;max-width:44ch}
+.pred-done .btn{margin:0 5px}
+.skip{display:block;margin:20px auto 0;padding:10px 24px;font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--slate);border-bottom:2px solid transparent}
+.skip:hover{color:var(--gate);border-bottom-color:var(--gate)}
+
+.scrim{position:fixed;inset:0;z-index:100;background:rgba(11,29,53,.55);display:none;place-items:center;padding:20px;backdrop-filter:blur(3px)}
+.scrim.is-open{display:grid}
+.modal{width:min(486px,100%);background:var(--paper);border-radius:var(--r);overflow:hidden;animation:rise .24s ease-out}
+.modal-body{padding:24px}
+.modal h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:25px;text-transform:uppercase;color:var(--navy);line-height:1.06}
+.modal .sub{color:var(--slate);font-size:14px;margin:6px 0 18px}
+.rule-line{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.rule-line dt{flex:none;width:66px;font-family:var(--f-label);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:12.5px;padding-top:2px}
+.rule-line dd{color:var(--slate)}
+.rule-line dd b{color:var(--navy);font-family:var(--f-data);font-weight:600}
+.dt-stake{color:var(--bay)}.dt-correct{color:var(--win)}.dt-wrong{color:var(--gate)}.dt-void{color:var(--void)}
+.note{margin:16px 0 20px;padding:12px 14px;border-radius:5px;background:rgba(224,147,10,.1);border-left:3px solid var(--void);font-size:13.5px;color:#7A5A12}
+.modal-actions{display:flex;gap:10px}
+.modal-actions .btn{flex:1}
+
+/* ============================================================ CHALLENGES */
+.chal-banner{
+  display:flex;align-items:center;gap:16px;padding:22px 26px;margin-bottom:22px;border-radius:var(--r);
+  background:linear-gradient(100deg,#132B4A,#1E4472);color:#fff;overflow:hidden;position:relative;
+}
+.chal-banner::after{content:"";position:absolute;right:-40px;top:-30px;width:230px;height:230px;background:repeating-linear-gradient(115deg,rgba(244,104,31,.55) 0 16px,transparent 16px 26px,rgba(41,171,226,.45) 26px 36px,transparent 36px 54px);transform:rotate(8deg);opacity:.5}
+.chal-banner i{width:46px;height:46px;flex:none;display:grid;place-items:center;background:var(--gate);font-style:normal;font-size:22px;clip-path:polygon(50% 0,100% 26%,100% 74%,50% 100%,0 74%,0 26%);position:relative;z-index:1}
+.chal-banner div{position:relative;z-index:1}
+.chal-banner h2{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:30px;text-transform:uppercase;line-height:1}
+.chal-banner p{font-family:var(--f-label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#9FC0DC}
+.chal-list{display:flex;flex-direction:column;gap:14px}
+.chal-card{padding:20px}
+.chal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:16px}
+.chal-card h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:20px;text-transform:uppercase;color:var(--navy);line-height:1.12;max-width:36ch}
+.timer{display:inline-flex;align-items:center;gap:6px;flex:none;padding:5px 10px;border:1px solid var(--line);border-radius:3px;font-family:var(--f-data);font-size:12px;color:var(--bay)}
+.timer--done{color:var(--slate);border-style:dashed}
+.yn{display:flex;gap:10px;margin-bottom:14px}
+.yn button{min-width:92px;padding:13px 20px;border:1.5px solid var(--line);border-radius:4px;font-family:var(--f-display);font-style:italic;font-weight:800;font-size:17px;text-transform:uppercase;color:var(--slate)}
+.yn button:hover:not([disabled]){border-color:var(--bay);color:var(--navy)}
+.yn button.is-on{background:var(--gate);border-color:var(--gate);color:#fff}
+.chal-card.is-closed{opacity:.62}
+.pool{font-family:var(--f-data);font-size:12.5px;color:var(--slate);margin-top:12px}
+.pool b{color:var(--navy)}
+.rules-panel{padding:18px}
+.rules-panel h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:18px;text-transform:uppercase;color:var(--navy);margin-bottom:12px}
+.rules-panel li{display:flex;gap:10px;padding:8px 0;font-size:14px;color:var(--slate);list-style:none;line-height:1.45}
+.rules-panel li i{flex:none;font-style:normal;font-family:var(--f-data);font-weight:600;color:var(--win)}
+.rules-panel li.no i{color:var(--gate)}
+.chal-card.is-joined{border-color:var(--win);box-shadow:0 1px 2px rgba(18,160,107,.14),0 8px 24px -16px rgba(18,160,107,.4)}
+.yn button.is-locked{opacity:.55;cursor:not-allowed}
+.yn button.is-locked.is-on{opacity:1;cursor:not-allowed}
+.chal-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.accepted{
+  display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:3px;
+  background:rgba(18,160,107,.12);border:1px solid var(--win);color:#0B7A50;
+  font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;
+}
+.accepted em{font-style:normal;font-family:var(--f-data);letter-spacing:0;text-transform:none;font-size:12.5px}
+.settled{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:3px;background:var(--haze);
+  font-family:var(--f-label);font-weight:700;font-size:12.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);
+}
+.settled b{color:var(--win)}
+
+/* toast — sits clear of the runs chip, never off-screen */
+.toast{
+  position:fixed;right:22px;bottom:22px;z-index:120;
+  display:flex;align-items:flex-start;gap:11px;
+  width:min(340px,calc(100vw - 32px));padding:13px 15px;border-radius:8px;
+  background:var(--navy);color:#fff;box-shadow:0 12px 30px -12px rgba(11,29,53,.6);
+  transform:translateY(140%);opacity:0;transition:transform .3s ease,opacity .3s ease;
+}
+.toast.is-up{transform:none;opacity:1}
+.toast i{
+  width:20px;height:20px;flex:none;border-radius:50%;background:var(--win);
+  display:grid;place-items:center;font-style:normal;font-size:12px;
+}
+.toast b{display:block;font-family:var(--f-label);font-weight:700;font-size:14px;letter-spacing:.02em}
+.toast span{font-size:13px;color:#A9C2D8}
+.runs-chip.is-flash{animation:flash 1s ease}
+@keyframes flash{0%,100%{background:rgba(244,104,31,.18)}35%{background:rgba(244,104,31,.55)}}
+
+/* join modal */
+.join-side{
+  display:flex;align-items:center;gap:10px;padding:12px 14px;margin-bottom:18px;border-radius:6px;
+  background:rgba(41,171,226,.09);border:1px solid rgba(41,171,226,.35);font-size:14px;color:var(--navy);
+}
+.join-side b{font-family:var(--f-label);font-weight:700;letter-spacing:.04em}
+.field-label{font-family:var(--f-label);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--slate);margin-bottom:8px}
+.run-chips{display:flex;gap:8px;margin-bottom:10px}
+.run-chip{flex:1;padding:12px 6px;border:1.5px solid var(--line);border-radius:4px;font-family:var(--f-data);font-weight:600;font-size:14px;color:var(--navy)}
+.run-chip:hover{border-color:var(--gate);color:var(--gate)}
+.run-chip.is-on,.run-chip.is-on:hover{background:var(--gate);border-color:var(--gate);color:#fff}
+.custom-runs{width:100%;height:42px;padding:0 13px;border:1.5px solid var(--line);border-radius:4px;background:var(--haze);font-family:var(--f-data);font-size:14px;color:var(--navy)}
+.custom-runs:focus{border-color:var(--gate);background:var(--paper)}
+.field-hint{margin-top:7px;font-size:12.5px;color:var(--slate)}
+.field-hint.is-bad{color:#C0392B;font-weight:600}
+.cost-line{
+  margin:16px 0 18px;padding:12px 14px;border-radius:5px;background:var(--haze);border-left:3px solid var(--gate);
+  font-size:13.5px;color:#3F5670;
+}
+.cost-line b{font-family:var(--f-data);font-weight:600;color:var(--navy)}
+.btn--text{padding:11px 14px;color:var(--slate)}
+.btn--text:hover{color:var(--navy)}
+@media (max-width:900px){ .toast{bottom:76px;left:15px;right:15px;width:auto} }
+
+/* ============================================================ DEALS */
+.deal-hero{
+  position:relative;overflow:hidden;padding:28px 30px;margin-bottom:20px;border-radius:var(--r);
+  background:linear-gradient(165deg,var(--sky-1),var(--sky-2) 70%);border:1px solid var(--line);
+}
+.deal-hero .brush{font-size:32px}
+.deal-hero h2{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:clamp(28px,3.4vw,40px);text-transform:uppercase;color:var(--navy);line-height:1}
+.deal-hero p{color:#3F5670;margin-top:9px;max-width:54ch}
+.deal-hero .stripe{width:170px;margin-top:16px;border-radius:2px}
+.deal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:18px}
+.deal{display:flex;flex-direction:column;overflow:hidden}
+.deal-img{position:relative;height:142px;background:var(--haze);border-bottom:1px solid var(--line);display:grid;place-items:center;padding:16px;text-align:center}
+.deal-logo{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:22px;text-transform:uppercase;color:var(--navy);letter-spacing:.01em}
+.deal-kind{display:block;font-family:var(--f-label);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);margin-top:5px}
+.badge{position:absolute;top:9px;left:9px;padding:4px 9px;border-radius:3px;font-family:var(--f-label);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
+.badge--us{background:var(--bay);color:#fff}
+.badge--ind{background:var(--void);color:#fff}
+.badge--tier{background:var(--navy);color:#fff}
+.badge--r{left:auto;right:9px}
+.badge--off{background:var(--gate);color:#fff}
+.badge--soon{background:var(--win);color:#fff}
+.deal-body{padding:14px;flex:1;display:flex;flex-direction:column;gap:7px}
+.deal-body h4{font-family:var(--f-label);font-weight:700;font-size:15px;line-height:1.3;color:var(--navy)}
+.deal-body .desc{font-size:13px;color:var(--slate);line-height:1.45}
+.deal-price{display:flex;align-items:baseline;gap:8px;font-family:var(--f-data)}
+.deal-price b{font-size:16px;font-weight:600;color:var(--navy)}
+.deal-price s{font-size:12px;color:var(--slate)}
+.deal-body .btn{margin-top:auto;width:100%;padding:10px;font-size:12px;letter-spacing:.06em}
+
+/* claim + dummy stripe checkout */
+.claim-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:6px;background:var(--haze);margin-bottom:16px}
+.claim-row .thumb{width:40px;height:40px;flex:none;border-radius:6px;background:linear-gradient(150deg,var(--gate),#CF4E12);display:grid;place-items:center;color:#fff;font-size:17px}
+.claim-row b{font-family:var(--f-label);font-weight:700;font-size:14.5px;color:var(--navy)}
+.claim-sec{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.claim-sec h4{
+  display:flex;align-items:center;gap:7px;padding:10px 14px;background:var(--haze);border-bottom:1px solid var(--line);
+  font-family:var(--f-label);font-weight:700;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gate);
+}
+.claim-line{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;font-size:14px;color:var(--slate);border-bottom:1px solid var(--line)}
+.claim-line:last-child{border-bottom:none}
+.claim-line b{font-family:var(--f-data);font-weight:600;color:var(--navy)}
+.claim-line b.short{color:#C0392B}
+.claim-line b.ok{color:var(--win)}
+
+.spay{position:fixed;inset:0;z-index:200;background:#F6F9FC;display:none;overflow:auto}
+.spay.is-open{display:block}
+.spay-wrap{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;max-width:1000px;margin:0 auto}
+.spay-left{padding:52px 44px;border-right:1px solid #E6EBF1}
+.spay-back{display:inline-flex;align-items:center;gap:7px;font-size:14px;color:#5B6B7F;margin-bottom:30px}
+.spay-back:hover{color:#0A2540}
+.spay-merchant{display:flex;align-items:center;gap:10px;font-family:var(--f-label);font-weight:700;font-size:15px;color:#0A2540;margin-bottom:28px}
+.spay-merchant i{width:26px;height:26px;border-radius:5px;background:var(--gate);display:grid;place-items:center;font-style:normal;color:#fff;font-size:13px}
+.spay-amt{font-family:var(--f-data);font-weight:600;font-size:38px;color:#0A2540;line-height:1.1}
+.spay-item{display:flex;justify-content:space-between;gap:14px;padding:16px 0;margin-top:22px;border-top:1px solid #E6EBF1;border-bottom:1px solid #E6EBF1;font-size:14px;color:#3C4A5C}
+.spay-item b{color:#0A2540}
+.spay-total{display:flex;justify-content:space-between;padding:14px 0;font-family:var(--f-label);font-weight:700;font-size:15px;color:#0A2540}
+.spay-right{padding:52px 44px;background:#fff}
+.spay-right h3{font-size:17px;font-weight:600;color:#0A2540;margin-bottom:20px;font-family:var(--f-body)}
+.spay-field{margin-bottom:14px}
+.spay-field label{display:block;font-size:12.5px;font-weight:600;color:#3C4A5C;margin-bottom:5px}
+.spay-field input,.spay-field select{
+  width:100%;height:42px;padding:0 12px;border:1px solid #D5DEE7;border-radius:6px;
+  font-family:var(--f-body);font-size:14.5px;color:#0A2540;background:#fff;
+  box-shadow:0 1px 1px rgba(10,37,64,.05);
+}
+.spay-field input:focus,.spay-field select:focus{border-color:#635BFF;outline:none;box-shadow:0 0 0 3px rgba(99,91,255,.18)}
+.spay-two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.spay-btn{
+  width:100%;height:46px;margin-top:18px;border-radius:6px;background:#635BFF;color:#fff;
+  font-family:var(--f-body);font-weight:600;font-size:15.5px;
+}
+.spay-btn:hover{background:#5348F5}
+.spay-btn[disabled]{opacity:.6;cursor:progress}
+.spay-note{margin-top:16px;font-size:12px;color:#8A97A8;text-align:center}
+.spay-note b{color:#635BFF}
+.spay-done{max-width:420px;margin:14vh auto;text-align:center;padding:34px;background:#fff;border-radius:10px;box-shadow:0 10px 40px -20px rgba(10,37,64,.4)}
+.spay-done .tick{width:58px;height:58px;margin:0 auto 16px;border-radius:50%;background:var(--win);color:#fff;display:grid;place-items:center;font-size:27px}
+.spay-done h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:24px;text-transform:uppercase;color:var(--navy);margin-bottom:8px}
+.spay-done p{color:var(--slate);font-size:14px;margin-bottom:20px}
+@media (max-width:820px){
+  .spay-wrap{grid-template-columns:1fr}
+  .spay-left,.spay-right{padding:26px 20px}
+  .spay-left{border-right:none;border-bottom:1px solid #E6EBF1}
+}
+
+/* partner strip */
+.partners{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);text-align:center}
+.partners h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:17px;text-transform:uppercase;color:var(--navy);letter-spacing:.02em;margin-bottom:18px}
+.partner-row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;margin-bottom:28px}
+.partner-row span{font-family:var(--f-label);font-weight:700;font-size:16px;letter-spacing:.06em;color:#7B8FA6;text-transform:uppercase}
+
+/* ============================================================ RESPONSIVE */
+.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(19,43,74,.09)}
+.mobile-nav button{flex:1;padding:10px 3px;font-family:var(--f-label);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);border-top:3px solid transparent}
+.mobile-nav button.is-active{color:var(--gate);border-top-color:var(--gate)}
+
+@media (max-width:1180px){ .grid-rail{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr;padding:16px;gap:12px}
+  .hero-shot{order:-1;aspect-ratio:16/6;max-height:104px}
+}
+@media (max-width:900px){
+  :root{--sidebar:0px}
+  .sidebar{display:none}
+  .brand{min-width:auto}
+  .brand-txt small{display:none}
+  .search{display:none}
+  .main{padding:18px 15px 84px}
+  .mobile-nav{display:flex}
+  .deal-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+  .deal-img{height:112px}
+  .pred-q{font-size:18px}
+  .chal-banner{padding:18px}
+  .chal-banner h2{font-size:24px}
+}
+@media (max-width:520px){
+  .topbar{gap:12px;padding:0 14px}
+  .runs-chip span{font-size:12px}
+  .yn button{flex:1;min-width:0}
+  .deal-grid{grid-template-columns:1fr 1fr}
+  .hero-copy h2{font-size:26px}
+  .page-head h1{font-size:26px}
+}
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important} }
+</style>
+</head>
+<body>
+
+<!-- silhouettes used as player/photo stand-ins -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="fig-bat" viewBox="0 0 200 250">
+    <g fill="currentColor">
+      <rect x="70" y="152" width="25" height="98" rx="11"/>
+      <rect x="105" y="152" width="25" height="98" rx="11"/>
+      <path d="M68 96c0-18 14-30 32-30s32 12 32 30v62H68z"/>
+      <path d="M66 104 40 136l15 13 28-28z"/>
+      <path d="M134 104l28 24-14 14-28-24z"/>
+      <circle cx="100" cy="54" r="23"/>
+      <path d="M75 46h50v-8a25 25 0 0 0-50 0z"/>
+      <rect x="150" y="52" width="15" height="92" rx="7" transform="rotate(30 157 98)"/>
+    </g>
+  </symbol>
+  <symbol id="fig-bowl" viewBox="0 0 200 250">
+    <g fill="currentColor">
+      <rect x="66" y="150" width="25" height="100" rx="11" transform="rotate(9 78 200)"/>
+      <rect x="108" y="150" width="25" height="100" rx="11" transform="rotate(-7 120 200)"/>
+      <path d="M70 98c0-18 13-30 30-30s30 12 30 30v58H70z"/>
+      <path d="M128 100l16-52 18 6-16 52z"/>
+      <circle cx="152" cy="40" r="12"/>
+      <path d="M70 106 44 142l15 12 26-32z"/>
+      <circle cx="100" cy="52" r="22"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">C</div>
+    <div class="brand-txt"><small>Cheer loud, earn louder</small><b>Champhunt</b></div>
+  </div>
+  <div class="search">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <input type="search" placeholder="Search players, pitches, hashtags…" aria-label="Search Champhunt">
+  </div>
+  <div class="topbar-right">
+    <button class="bell" aria-label="2 new notifications">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg><b>2</b>
+    </button>
+    <button class="runs-chip" id="openRuns" title="See your runs history"><i></i><span>2.51M</span></button>
+    <button class="avatar" id="openProfile" title="Your profile">SK</button>
+  </div>
+</header>
+
+<div class="shell">
+  <!-- ===================== SIDEBAR ===================== -->
+  <nav class="sidebar" aria-label="Main">
+    <button class="nav-item is-active" data-go="pitch"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3v18M12 3v18M18 3v18"/></svg>Pitch</button>
+    <button class="nav-item" data-go="predictions"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="12" rx="3"/><path d="M7 12h3M8.5 10.5v3M16 12h.01M18 14h.01"/></svg>Predictions</button>
+    <button class="nav-item" data-go="challenges"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2s5 4 5 9a5 5 0 01-10 0c0-5 5-9 5-9z"/><path d="M12 22a4 4 0 004-4c0-2-4-5-4-5s-4 3-4 5a4 4 0 004 4z"/></svg>Challenges</button>
+    <button class="nav-item" data-go="deals"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>Deals</button>
+    <button class="nav-item" disabled aria-disabled="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v14H4z"/><path d="M9 9l6 3-6 3z"/></svg>Highlights<span class="soon">Soon</span></button>
+    <button class="nav-item" disabled aria-disabled="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a8 8 0 01-11.6 7.1L3 21l1.9-6.4A8 8 0 1121 12z"/></svg>Dugout<span class="soon">Soon</span></button>
+
+    <div class="vip is-disabled"><p>VIP cricket experience — not open yet</p><button disabled aria-disabled="true">Champhunt+</button></div>
+
+    <!-- EXPLORE section hidden — uncomment to restore
+    <div class="nav-head">Explore</div>
+    <button class="nav-sub">Suggested profiles</button>
+    <button class="nav-sub">Rules</button>
+    <button class="nav-sub">Chat with Champhunt</button>
+    -->
+    <div class="nav-head">More</div>
+    <button class="nav-sub">Contact us</button>
+    <button class="nav-sub">About us</button>
+    <button class="nav-sub">Privacy policy</button>
+  </nav>
+
+  <main class="main">
+
+    <!-- ==================================================== PITCH -->
+    <section class="view is-active" id="view-pitch">
+      <div class="stories">
+        <button class="story story--add" id="openStory"><i id="myStoryRing">+</i><span>Your story</span></button>
+        <div class="story"><i>MS</i><span>Matt Short</span></div>
+        <div class="story"><i>FA</i><span>Finn Allen</span></div>
+        <div class="story"><i>HR</i><span>Haris Rauf</span></div>
+        <div class="story"><i>LP</i><span>Pretorius</span></div>
+        <div class="story"><i>SK</i><span>Sanjay K.</span></div>
+        <div class="story"><i>XB</i><span>Bartlett</span></div>
+      </div>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <span class="brush">Latest news</span>
+          <h2>Unicorns fall to Washington Freedom in MLC Challenger</h2>
+          <p>San Francisco Unicorns 231/6 (M Short 121; X Bartlett 28) lost to Washington Freedom 238/6 (A Gous 73; X Bartlett 3/36) by seven runs. The Unicorns' 2026 Major League Cricket season ends in the Challenger.</p>
+          <a class="btn btn--gate btn--sm" href="#">Learn more</a>
+          <div class="hero-stats">
+            <div class="hero-stat"><b>231/6</b><span>Unicorns</span></div>
+            <div class="hero-stat"><b>121</b><span>M Short</span></div>
+            <div class="hero-stat"><b>3/36</b><span>X Bartlett</span></div>
+          </div>
+        </div>
+        <div class="hero-shot"><span class="wm">2</span><svg class="fig" viewBox="0 0 200 250"><use href="#fig-bat"/></svg></div>
+      </div>
+
+      <div class="grid-rail">
+        <div>
+          <div class="card composer">
+            <div class="composer-top">
+              <div class="avatar">SK</div>
+              <input type="text" placeholder="Your words, your pitch — let's hear it!" aria-label="Write a pitch">
+            </div>
+            <div class="composer-actions">
+              <button data-comp="photo">▣ Photo</button>
+              <button data-comp="video">▶ Video</button>
+              <button data-comp="poll">▤ Poll</button>
+              <button data-comp="text">✎ Text</button>
+            </div>
+            <input type="file" id="postFile" accept="image/*" hidden>
+            <div id="postAttach"></div>
+            <div class="poll-fields" id="pollFields">
+              <input type="text" placeholder="Option 1" aria-label="Poll option 1">
+              <input type="text" placeholder="Option 2" aria-label="Poll option 2">
+            </div>
+            <div class="composer-bar">
+              <small style="color:var(--slate);font-size:12.5px">Posting on the Pitch earns 50 runs</small>
+              <button class="btn btn--gate btn--sm" id="postBtn" disabled>Post pitch</button>
+            </div>
+          </div>
+
+          <div class="switch"><button class="is-on" data-feed>Global pitch</button><button data-feed>For you</button></div>
+
+          <!-- 10 posts -->
+          <article class="card post">
+            <div class="post-flag">📌 Pinned post</div>
+            <div class="post-head"><div class="avatar">SA</div><div class="post-id"><b>Sparkle Army HQ</b><span>2h ago · Oakland Coliseum</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">231 on the board and it still wasn't enough. Matt Short's 121 was the innings of the season and the Challenger still slipped away by seven runs. Season over — but this squad went to the top of the table and stayed there. #GoCorns</div>
+            <div class="post-media"><span class="cap">Short 121 vs Washington Freedom</span><svg class="fig" viewBox="0 0 200 250"><use href="#fig-bat"/></svg></div>
+            <div class="post-stats"><span class="runs-count"><b>250</b> Runs</span><span class="cmt-count" data-open-cmt>612 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">RK</div><div class="post-id"><b>Ravi Kulkarni</b><span>6h ago · Fremont, CA</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">94* off a chase that was never on, against Andre Russell in his 600th T20. Matt Short in playoff cricket is a different player. Who else is putting him in their 2027 retention XI?</div>
+            <div class="post-stats"><span class="runs-count"><b>180</b> Runs</span><span class="cmt-count" data-open-cmt>240 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">CN</div><div class="post-id"><b>Champhunt News</b><span>1d ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">Ravichandran Ashwin ruled out for the rest of MLC 2026 with a right knee injury. Peter Siddle approved as his replacement. Huge blow — Ashwin was the control bowler in the middle overs all season.</div>
+            <div class="post-stats"><span class="runs-count"><b>210</b> Runs</span><span class="cmt-count" data-open-cmt>488 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">NB</div><div class="post-id"><b>Neha Baisa</b><span>1d ago · San Jose, CA</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">Lhuan-dre Pretorius: 102* in a chase of 144, maiden T20 hundred, and he made it look like a net session. Remember where you saw it first.</div>
+            <div class="post-media"><span class="cap">Pretorius 102* vs MI New York</span><svg class="fig" viewBox="0 0 200 250"><use href="#fig-bat"/></svg></div>
+            <div class="post-stats"><span class="runs-count"><b>160</b> Runs</span><span class="cmt-count" data-open-cmt>301 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">US</div><div class="post-id"><b>Unicorns Sport Foundation</b><span>2d ago · Bay Area</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">We're live. The Foundation is now a 501(c)(3) public charity built to widen access to cricket for young people across the Bay Area. Free clinics start this month — coaches, gear and pitch time, no fee.</div>
+            <div class="post-stats"><span class="runs-count"><b>300</b> Runs</span><span class="cmt-count" data-open-cmt>720 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">DS</div><div class="post-id"><b>Dilip Singh</b><span>3d ago</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">Finn Allen 65, Hassan Khan 36, Orcas knocked out, six-wicket win, top of the table going into the playoffs. That's how you close a regular season.</div>
+            <div class="post-stats"><span class="runs-count"><b>120</b> Runs</span><span class="cmt-count" data-open-cmt>155 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">AM</div><div class="post-id"><b>Aisha Mehta</b><span>4d ago · Oakland, CA</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">Sanjay Krishnamurthi is the story nobody outside the Bay is telling. 57 in the playoff, 48 in the chase before that. Homegrown USA batter carrying a top order full of internationals.</div>
+            <div class="post-stats"><span class="runs-count"><b>140</b> Runs</span><span class="cmt-count" data-open-cmt>268 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">JP</div><div class="post-id"><b>Jay Patel</b><span>5d ago · BART, Coliseum stn</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">Coliseum on a matchday: full lower bowl, drums going from over three, the whole Sparkle Army in orange. Take BART, skip the parking, thank me later.</div>
+            <div class="post-media"><span class="cap">Matchday at the Coliseum</span><svg class="fig" viewBox="0 0 200 250"><use href="#fig-bowl"/></svg></div>
+            <div class="post-stats"><span class="runs-count"><b>220</b> Runs</span><span class="cmt-count" data-open-cmt>402 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">HR</div><div class="post-id"><b>Haris Rauf Fan Club</b><span>6d ago</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">Rauf's second spell under lights is the best ten minutes of cricket in this league. Speed gun doesn't drop, the bouncer still comes, and batters start looking at the pavilion. Predict his next-match wickets in the Arena.</div>
+            <div class="post-stats"><span class="runs-count"><b>130</b> Runs</span><span class="cmt-count" data-open-cmt>199 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+
+          <article class="card post">
+            <div class="post-head"><div class="avatar">MS</div><div class="post-id"><b>Merch Store</b><span>1w ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
+            <div class="post-body">End-of-season drop: playing jerseys down to $45 for the Sparkle Army. Redeem partly in runs on the Deals tab — the balance comes off at checkout.</div>
+            <div class="post-stats"><span class="runs-count"><b>90</b> Runs</span><span class="cmt-count" data-open-cmt>88 comments</span></div>
+            <div class="post-comments">
+              <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+              <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+              <div class="cmt-list">
+                <div class="cmt"><span class="avatar">RS</span><div class="cmt-body"><div class="cmt-head"><b>rajesh singh</b><span class="cmt-time">4 hours ago</span></div><p>Big call. Backing this one.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">NB</span><div class="cmt-body"><div class="cmt-head"><b>Neha Baisa</b><span class="cmt-time">5 hours ago</span></div><p>Saw it live at the Coliseum — unreal atmosphere.</p><button class="cmt-reply">Reply</button></div></div>
+                <div class="cmt"><span class="avatar">JP</span><div class="cmt-body"><div class="cmt-head"><b>Jay Patel</b><span class="cmt-time">6 hours ago</span></div><p>Sparkle Army out in numbers again.</p><button class="cmt-reply">Reply</button></div></div>
+              </div>
+            </div>
+            <div class="post-foot">
+              <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+              <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+              <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+              <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+            </div>
+          </article>
+        </div>
+
+        <aside class="rail">
+          <div class="card">
+            <div class="card-head"><h3>Prediction</h3><span class="live-dot"><i></i>Live</span></div>
+            <div class="rail-q">Will Matt Short score 50+ in the Unicorns' opening fixture next season?</div>
+            <div class="rail-split"><div class="split-bar"><i style="width:61%"></i><i style="width:39%"></i></div><div class="split-legend"><span>Yes 61%</span><span>No 39%</span></div></div>
+            <div class="rail-opts">
+              <button class="rail-opt" data-jump>Yes, he does <em>−1,000</em></button>
+              <button class="rail-opt" data-jump>No, he doesn't <em>−1,000</em></button>
+            </div>
+            <div class="rail-foot"><span class="data" data-countdown="38:32:14">Ends in 38h 32m 14s</span><a href="#" data-jump>Play →</a></div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h3>🏆 Leaderboard</h3><div class="mini-tabs"><button class="is-on">Daily</button><button>Weekly</button><button>All time</button></div></div>
+            <div class="lb-row"><span class="lb-rank">1</span><span class="avatar">RS</span><span class="lb-name">rajesh singh</span><span class="lb-runs">2M</span></div>
+            <div class="lb-row"><span class="lb-rank">2</span><span class="avatar">HP</span><span class="lb-name">hello premsingh</span><span class="lb-runs">540K</span></div>
+            <div class="lb-row"><span class="lb-rank">3</span><span class="avatar">DS</span><span class="lb-name">Dilip Singh</span><span class="lb-runs">440K</span></div>
+            <div class="lb-row"><span class="lb-rank">4</span><span class="avatar">JP</span><span class="lb-name">Jay Patel</span><span class="lb-runs">318K</span></div>
+            <div class="lb-row"><span class="lb-rank">5</span><span class="avatar">NB</span><span class="lb-name">Neha Baisa</span><span class="lb-runs">291K</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================================================== PREDICTIONS -->
+    <section class="view" id="view-predictions">
+      <div class="page-head">
+        <span class="brush">Arena</span>
+        <h1>Prediction game</h1>
+        <p>Stake 1,000 runs. Call it right, take 1,500 back. Ten questions live from the Unicorns' season.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab is-on" data-ptab>Play</button>
+        <button class="tab" data-ptab>History</button>
+        <button class="tab" id="openRules" style="margin-left:auto">How it works</button>
+      </div>
+
+      <div class="pred-progress">
+        <span>Question <b id="qNow">1</b> of <b id="qAll">10</b></span>
+        <div class="qbar"><i id="qFill" style="width:10%"></i></div>
+      </div>
+
+      <div class="pred-list">
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">SFU <em>vs</em> WSF</span><span class="live-dot"><i></i>Live</span><div class="pred-clock"><b class="data" data-countdown="37:41:48">37:41:48</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will Matt Short score 50+ in the Unicorns' opening fixture next season?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, Short goes past fifty.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, he falls short.</b></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:61%"></i><i style="width:39%"></i></div><div class="split-legend"><span>Yes 61%</span><span>No 39%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">SFU <em>vs</em> LAKR</span><span class="live-dot"><i></i>Live</span><div class="pred-clock"><b class="data" data-countdown="22:08:05">22:08:05</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will Haris Rauf take three or more wickets in his next T20 for the Unicorns?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, three or more.</b></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, two or fewer.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:44%"></i><i style="width:56%"></i></div><div class="split-legend"><span>Yes 44%</span><span>No 56%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">Squad <em>·</em> 2027</span><div class="pred-clock"><b class="data" data-countdown="96:00:00">96:00:00</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will the Unicorns retain Finn Allen for the 2027 season?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, he's retained.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, he moves on.</b></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:72%"></i><i style="width:28%"></i></div><div class="split-legend"><span>Yes 72%</span><span>No 28%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">Oakland <em>·</em> Home</span><div class="pred-clock"><b class="data" data-countdown="61:15:30">61:15:30</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will the next Unicorns home game at the Coliseum draw more than 10,000 fans?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, over 10,000.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, under 10,000.</b></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:58%"></i><i style="width:42%"></i></div><div class="split-legend"><span>Yes 58%</span><span>No 42%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">SFU <em>vs</em> MINY</span><div class="pred-clock"><b class="data" data-countdown="14:44:12">14:44:12</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will Lhuan-dre Pretorius score another T20 century in 2027?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, at least one.</b></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No hundreds this season.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:37%"></i><i style="width:63%"></i></div><div class="split-legend"><span>Yes 37%</span><span>No 63%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">SFU <em>vs</em> SEO</span><div class="pred-clock"><b class="data" data-countdown="08:30:00">08:30:00</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will the Unicorns win the toss and choose to bat first in their next fixture?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, win toss and bat.</b></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>Anything else.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:26%"></i><i style="width:74%"></i></div><div class="split-legend"><span>Yes 26%</span><span>No 74%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">Bowling <em>·</em> XI</span><div class="pred-clock"><b class="data" data-countdown="33:12:40">33:12:40</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will Peter Siddle open the bowling in his next appearance for the Unicorns?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, he takes the new ball.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, first change or later.</b></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:54%"></i><i style="width:46%"></i></div><div class="split-legend"><span>Yes 54%</span><span>No 46%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">Season <em>·</em> Wickets</span><div class="pred-clock"><b class="data" data-countdown="120:00:00">120:00:00</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will Xavier Bartlett finish next season with 15 or more wickets?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, 15 or more.</b></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, 14 or fewer.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:48%"></i><i style="width:52%"></i></div><div class="split-legend"><span>Yes 48%</span><span>No 52%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">Batting <em>·</em> Order</span><div class="pred-clock"><b class="data" data-countdown="19:05:55">19:05:55</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will Hassan Khan bat inside the top five in the Unicorns' next match?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, top five.</b></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, six or lower.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:41%"></i><i style="width:59%"></i></div><div class="split-legend"><span>Yes 41%</span><span>No 59%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+
+        <article class="card pred-card">
+          <div class="pred-top"><span class="pred-matchup">MLC <em>·</em> 2027</span><div class="pred-clock"><b class="data" data-countdown="240:00:00">240:00:00</b><span>Ends in</span></div></div>
+          <h2 class="pred-q">Will the Unicorns reach the MLC final in 2027?</h2>
+          <div class="pred-opts">
+            <button class="opt"><span class="opt-line"><b>Yes, they make the final.</b><span class="tag-ai">🤖 AI's choice</span></span><span class="opt-stake">−1,000 runs</span></button>
+            <button class="opt"><span class="opt-line"><b>No, they fall short again.</b></span><span class="opt-stake">−1,000 runs</span></button>
+          </div>
+          <div class="pred-split"><div class="split-bar"><i style="width:66%"></i><i style="width:34%"></i></div><div class="split-legend"><span>Yes 66%</span><span>No 34%</span></div></div>
+          <div class="pred-foot"><span>By joining this prediction, you stake <b class="data">1,000</b> runs.</span><span class="state">No pick yet</span></div>
+        </article>
+      </div>
+
+      <button class="skip" id="skipQ">Skip this question →</button>
+
+      <div class="card pred-done" id="predDone" style="display:none">
+        <h3>That's the lot</h3>
+        <p>You've been through every live question. New ones drop as the next match gets closer.</p>
+        <button class="btn btn--ghost" id="replayQ">Start over</button>
+        <button class="btn btn--gate" data-go="pitch">Back to the Pitch</button>
+      </div>
+    </section>
+
+    <!-- ==================================================== CHALLENGES -->
+    <section class="view" id="view-challenges">
+      <div class="chal-banner">
+        <i>🔥</i>
+        <div><h2>Challenges</h2><p>Answer &amp; conquer</p></div>
+        <span class="live-dot" style="margin-left:auto;position:relative;z-index:1;color:#fff"><i></i>Live now</span>
+      </div>
+
+      <div class="grid-rail">
+        <div>
+          <div class="tabs"><button class="tab is-on" data-ctab="live">Fun challenges</button><button class="tab" data-ctab="settled">Results</button></div>
+          <p style="color:var(--slate);margin-bottom:16px;max-width:66ch">Pick a side, choose your stake, and the pool splits between everyone who called it right — minus a 10% house cut.</p>
+
+          <div class="chal-list">
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will the Unicorns chase 200+ in any match next season?</h3><span class="timer" data-countdown="50:02:45">⏱ 2d 2h 45m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>184,500 runs</b> · 342 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will any Unicorn take a hat-trick in MLC 2027?</h3><span class="timer" data-countdown="72:30:00">⏱ 3d 0h 30m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>96,000 runs</b> · 188 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will the Sparkle Army fill the Coliseum lower bowl on opening night?</h3><span class="timer" data-countdown="18:14:30">⏱ 18h 14m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>62,000 runs</b> · 118 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will Matt Short captain the side again in 2027?</h3><span class="timer" data-countdown="120:00:00">⏱ 5d 0h 0m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>211,300 runs</b> · 407 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will a Unicorns batter top the MLC run charts next season?</h3><span class="timer" data-countdown="96:45:00">⏱ 4d 0h 45m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>74,800 runs</b> · 149 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will the Unicorns beat Washington Freedom next time out?</h3><span class="timer" data-countdown="40:20:10">⏱ 1d 16h 20m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>158,900 runs</b> · 311 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will Finn Allen hit five or more sixes in a single innings?</h3><span class="timer" data-countdown="26:00:00">⏱ 1d 2h 0m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>133,400 runs</b> · 265 players in</div>
+            </article>
+
+            <article class="card chal-card" data-status="live">
+              <div class="chal-top"><h3>Will the Foundation's free clinics reach 1,000 kids this year?</h3><span class="timer" data-countdown="180:00:00">⏱ 7d 12h 0m left</span></div>
+              <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
+              <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
+              <div class="pool">Pool so far <b>48,200 runs</b> · 96 players in</div>
+            </article>
+
+            <article class="card chal-card is-closed" data-status="settled">
+              <div class="chal-top"><h3>Will Sanjay Krishnamurthi hit at least one six?</h3><span class="timer timer--done">Ended</span></div>
+              <div class="yn"><button class="is-locked" disabled>Yes</button><button class="is-locked" disabled>No</button></div>
+              <div class="chal-actions"><span class="settled">Settled · <b>Yes</b> paid 1,340 runs</span></div>
+            </article>
+
+            <article class="card chal-card is-closed" data-status="settled">
+              <div class="chal-top"><h3>Will Ravichandran Ashwin return to the XI this season?</h3><span class="timer timer--done">Ended</span></div>
+              <div class="yn"><button class="is-locked" disabled>Yes</button><button class="is-locked" disabled>No</button></div>
+              <div class="chal-actions"><span class="settled">Settled · <b>No</b> paid 890 runs</span></div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="rail">
+          <div class="card rules-panel">
+            <h3>Rules</h3>
+            <ul>
+              <li><i>✓</i>Minimum 500 runs to join any challenge</li>
+              <li><i>✓</i>Winners take the combined pool minus 10%</li>
+              <li class="no"><i>✕</i>You can't take the same challenge twice</li>
+              <li><i>✓</i>Challenge friends straight from a Pitch post</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-head"><h3>Your record</h3></div>
+            <div class="lb-row"><span class="lb-name">Challenges joined</span><span class="lb-runs" id="recJoined">27</span></div>
+            <div class="lb-row"><span class="lb-name">Called right</span><span class="lb-runs">16</span></div>
+            <div class="lb-row"><span class="lb-name">Net runs</span><span class="lb-runs">+41,200</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================================================== PROFILE -->
+    <section class="view" id="view-profile">
+      <div class="pf-cover">
+        <button class="pf-back" id="pfBack" aria-label="Go back">←</button>
+      </div>
+
+      <div class="pf-headrow">
+        <div class="pf-avatar">SK<button class="pf-cam" aria-label="Change photo">▣</button></div>
+        <div class="pf-name">
+          <h2>Sameer Kanva <span class="verified">✓</span> <span class="runs-badge" id="pfRuns">2,510,000 Runs</span></h2>
+          <div class="handle">@sameerk</div>
+        </div>
+        <button class="btn btn--gate btn--sm">✎ Edit profile</button>
+      </div>
+
+      <div class="pf-grid">
+        <div>
+          <div class="pf-counts">
+            <div class="pf-count"><b>3</b><span>Posts</span></div>
+            <div class="pf-count"><b>1</b><span>Followers</span></div>
+            <div class="pf-count"><b>8</b><span>Following</span></div>
+          </div>
+
+          <div class="pf-seg">
+            <button class="is-on" data-pf="posts">Posts</button>
+            <button data-pf="highlights">Highlights</button>
+            <button data-pf="saved">Saved</button>
+          </div>
+
+          <div id="pfPosts">
+            <article class="card post" style="margin-bottom:16px">
+              <div class="post-head">
+                <div class="avatar">SK</div>
+                <div class="post-id"><b>Sameer Kanva</b><span>12 minutes ago</span></div>
+                <button class="btn btn--text btn--sm" style="margin-left:auto">···</button>
+              </div>
+              <div class="post-body">Season's done but this one still stings. Short's 121 deserved better.</div>
+              <div class="quote">
+                <div class="quote-head"><span class="avatar">SA</span><b>Sparkle Army HQ</b><span>2h ago</span></div>
+                <p>231 on the board and it still wasn't enough. Matt Short's 121 was the innings of the season and the Challenger still slipped away by seven runs. #GoCorns</p>
+              </div>
+              <div class="post-stats"><span class="runs-count"><b>124</b> Runs</span><span class="cmt-count" data-open-cmt>18 comments</span></div>
+              <div class="post-comments">
+                <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+                <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+                <div class="cmt-list"></div>
+              </div>
+              <div class="post-foot">
+                <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+                <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+                <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+                <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+              </div>
+            </article>
+
+            <article class="card post" style="margin-bottom:16px">
+              <div class="post-head">
+                <div class="avatar">SK</div>
+                <div class="post-id"><b>Sameer Kanva</b><span>5 days ago</span></div>
+                <button class="btn btn--text btn--sm" style="margin-left:auto">···</button>
+              </div>
+              <div class="post-body">Taking BART to the Coliseum is the only correct way to do a matchday. Parking is a trap.</div>
+              <div class="post-stats"><span class="runs-count"><b>88</b> Runs</span><span class="cmt-count" data-open-cmt>11 comments</span></div>
+              <div class="post-comments">
+                <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
+                <div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div>
+                <div class="cmt-list"></div>
+              </div>
+              <div class="post-foot">
+                <button class="act-runs" data-act="runs"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>Runs</button>
+                <button class="act-comment" data-act="comment"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>Comment</button>
+                <button class="act-repost" data-act="repost"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>Repost</button>
+                <button class="act-share" data-act="share"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>Share</button>
+              </div>
+            </article>
+          </div>
+
+          <div class="card" id="pfHighlights" style="display:none"><p class="pf-empty">No highlights yet. Save a moment from a match and it lands here.</p></div>
+          <div class="card" id="pfSaved" style="display:none"><p class="pf-empty">Nothing saved yet. Tap ··· on any pitch to save it.</p></div>
+        </div>
+
+        <aside>
+          <div class="card pymk">
+            <h3>People you may know</h3>
+            <div class="pymk-row"><span class="avatar">TS</span><span class="pymk-id"><b>Teena Sharma</b><span>@teena</span></span><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="pymk-row"><span class="avatar">BR</span><span class="pymk-id"><b>Bhan Rajput</b><span>@bhan</span></span><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="pymk-row"><span class="avatar">AR</span><span class="pymk-id"><b>Aarohi Rana</b><span>@aarohi</span></span><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="pymk-row"><span class="avatar">SB</span><span class="pymk-id"><b>Shikha Baisa</b><span>@shikha</span></span><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <div class="pymk-row"><span class="avatar">CU</span><span class="pymk-id"><b>CPL Update 2026</b><span>@cpl_update</span></span><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
+            <button class="btn btn--ghost btn--sm" id="pfShare">Show more</button>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================================================== RUNS HISTORY -->
+    <section class="view" id="view-runs">
+      <div class="rh-head">
+        <button class="rh-back" id="runsBack" aria-label="Go back">←</button>
+        <h1>Runs history</h1>
+      </div>
+
+      <div class="rh-grid">
+        <div>
+          <div class="card bal-card">
+            <div class="eyebrow">Current balance</div>
+            <div class="bal-big" id="balBig">2,510,000<em>runs</em></div>
+            <div class="bal-row"><span>▲ Earned</span><b class="up" id="balEarned">+0</b></div>
+            <div class="bal-row"><span>▼ Spent</span><b class="down" id="balSpent">0</b></div>
+            <div class="bal-row"><span>Total transactions</span><b id="balCount">0</b></div>
+          </div>
+          <div class="card rh-filters">
+            <button class="is-on" data-tx="all">All transactions</button>
+            <button data-tx="earned">Earned</button>
+            <button data-tx="spent">Spent</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="tx-head"><h3 id="txTitle">All transactions</h3><small id="txCount">—</small></div>
+          <div id="txList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== DEALS -->
+    <section class="view" id="view-deals">
+      <div class="deal-hero">
+        <span class="brush">Spend what you've earned</span>
+        <h2>Borrowing runs</h2>
+        <p>Your runs come off the price at checkout. Pay the rest in cash, or wait for a full-runs drop. New stock every matchweek.</p>
+        <div class="stripe"></div>
+      </div>
+
+      <div class="note-strip">
+        <span>⚠</span>
+        <div>Sample offers only. Brand names come from the Unicorns partner list and are used here as design placeholders — none of these are live partnerships or approved offers.</div>
+      </div>
+
+      <div class="tabs">
+        <button class="tab is-on" data-filter="all">All deals</button>
+        <button class="tab" data-filter="active">Active</button>
+        <button class="tab" data-filter="locked">Locked</button>
+        <button class="tab" data-filter="soon">Coming soon</button>
+        <button class="tab" data-filter="redeemed">Redeemed</button>
+      </div>
+
+      <div class="deal-grid">
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--tier">Official partner</span><span class="badge badge--r badge--off">$500 off</span><div><span class="deal-logo">Toyota</span><span class="deal-kind">Automotive</span></div></div>
+          <div class="deal-body"><h4>Matchday test-drive credit</h4><p class="desc">Book a test drive at the Coliseum activation and take $500 off any new Corolla or RAV4.</p><div class="deal-price"><b>$0</b><s>+ 25,000 runs</s></div><button class="btn btn--gate" data-claim data-cash="0" data-runs="25000" data-title="Toyota matchday test-drive credit">Claim + 25,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--tier">Premium partner</span><span class="badge badge--r badge--off">30% off</span><div><span class="deal-logo">Royal</span><span class="deal-kind">Food &amp; grocery</span></div></div>
+          <div class="deal-body"><h4>Matchday biryani hamper</h4><p class="desc">10lb basmati, spice kit and a Sparkle Army apron — delivered before the next home game.</p><div class="deal-price"><b>$34</b><s>$49</s></div><button class="btn btn--gate" data-claim data-cash="34" data-runs="15000" data-title="Royal matchday biryani hamper">$34 + 15,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--us">US only</span><div><span class="deal-logo">Radio Zindagi</span><span class="deal-kind">1550 AM · Media</span></div></div>
+          <div class="deal-body"><h4>On-air matchday shoutout</h4><p class="desc">Your name and message read live on the SF–San Jose broadcast during the innings break.</p><div class="deal-price"><b>Runs only</b></div><button class="btn btn--navy" data-claim data-cash="0" data-runs="40000" data-title="Radio Zindagi on-air shoutout">40,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--tier">Supporting partner</span><div><span class="deal-logo">Aspire Cricket</span><span class="deal-kind">Coaching</span></div></div>
+          <div class="deal-body"><h4>One-hour batting session</h4><p class="desc">Net time with a Level-2 coach at the Fremont academy, video review included.</p><div class="deal-price"><b>$29</b><s>$60</s></div><button class="btn btn--gate" data-claim data-cash="29" data-runs="30000" data-title="Aspire Cricket batting session">$29 + 30,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--us">US only</span><div><span class="deal-logo">Bartable</span><span class="deal-kind">BART · Transit</span></div></div>
+          <div class="deal-body"><h4>Coliseum matchday credit</h4><p class="desc">$10 of BART value loaded to your Clipper card for any Unicorns home fixture.</p><div class="deal-price"><b>Runs only</b></div><button class="btn btn--navy" data-claim data-cash="0" data-runs="18000" data-title="Bartable Coliseum matchday credit">18,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--tier">Major partner</span><div><span class="deal-logo">Qualys</span><span class="deal-kind">Hospitality</span></div></div>
+          <div class="deal-body"><h4>Box seats ballot entry</h4><p class="desc">Two seats in the partner box for a home game. Every 5,000 runs is one entry.</p><div class="deal-price"><b>Ballot</b></div><button class="btn btn--navy" data-claim data-cash="0" data-runs="5000" data-title="Qualys box seats ballot entry">Enter for 5,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="active">
+          <div class="deal-img"><span class="badge badge--tier">Official partner</span><span class="badge badge--r badge--off">40% off</span><div><span class="deal-logo">Hexaware</span><span class="deal-kind">Merch</span></div></div>
+          <div class="deal-body"><h4>Training tee bundle</h4><p class="desc">Two training tees in Unicorns orange, sizes YS to XXL.</p><div class="deal-price"><b>$27</b><s>$45</s></div><button class="btn btn--gate" data-claim data-cash="27" data-runs="12000" data-title="Hexaware training tee bundle">$27 + 12,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="soon">
+          <div class="deal-img"><span class="badge badge--tier">Premium partner</span><span class="badge badge--r badge--soon">Coming soon</span><div><span class="deal-logo">Persistent</span><span class="deal-kind">Merch</span></div></div>
+          <div class="deal-body"><h4>Sparkle Army cap</h4><p class="desc">Season-two snapback with the unicorn mark in raised orange stitch.</p><div class="deal-price"><b>$25</b></div><button class="btn btn--ghost" disabled>Drops Friday</button></div>
+        </article>
+
+        <article class="card deal" data-state="locked">
+          <div class="deal-img"><span class="badge badge--tier">Official partner</span><div><span class="deal-logo">Lyzr</span><span class="deal-kind">Software</span></div></div>
+          <div class="deal-body"><h4>Three months of builder credits</h4><p class="desc">For fans building their own cricket tools. Unlocks at a 75,000-run balance.</p><div class="deal-price"><b>Runs only</b></div><button class="btn btn--ghost" disabled>🔒 Unlock at 75,000 runs</button></div>
+        </article>
+
+        <article class="card deal" data-state="redeemed">
+          <div class="deal-img"><span class="badge badge--us">US only</span><div><span class="deal-logo">Truefoundry</span><span class="deal-kind">Student credits</span></div></div>
+          <div class="deal-body"><h4>Student GPU credit pack</h4><p class="desc">Claimed 12 July. Redemption code sent to your registered email.</p><div class="deal-price"><b>Redeemed</b></div><button class="btn btn--ghost" disabled>Redeemed 12 Jul</button></div>
+        </article>
+      </div>
+
+      <div class="partners">
+        <h3>Official partners</h3>
+        <div class="partner-row"><span>nttvc</span><span>Temporal</span><span>Royal</span><span>Persistent</span><span>Hexaware</span><span>Toyota</span><span>Lyzr</span><span>Truefoundry</span></div>
+        <h3>Supporting partners</h3>
+        <div class="partner-row"><span>Bartable</span><span>Radio Zindagi</span><span>Aspire Cricket</span><span>Cricket Victoria</span></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<nav class="mobile-nav" aria-label="Main (mobile)">
+  <button class="is-active" data-go="pitch">Pitch</button>
+  <button data-go="predictions">Predict</button>
+  <button data-go="challenges">Challenge</button>
+  <button data-go="deals">Deals</button>
+</nav>
+
+<!-- ===================== CLAIM MODAL ===================== -->
+<div class="scrim" id="claimScrim" role="dialog" aria-modal="true" aria-labelledby="claimTitle">
+  <div class="modal">
+    <div class="stripe"></div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <h3 id="claimTitle" style="flex:1">Confirm your claim</h3>
+        <button data-cclose aria-label="Close" style="font-size:20px;line-height:1;color:var(--slate)">×</button>
+      </div>
+      <p class="sub">Check the details before you redeem.</p>
+
+      <div class="claim-row"><span class="thumb">🎁</span><b id="claimName">—</b></div>
+
+      <div class="claim-sec">
+        <h4>◆ Transaction details</h4>
+        <div class="claim-line" id="lineCash"><span>Card payment</span><b>—</b></div>
+        <div class="claim-line" id="lineRuns"><span>Runs cost</span><b>—</b></div>
+        <div class="claim-line"><span>Your balance</span><b id="claimBal">—</b></div>
+      </div>
+
+      <div class="modal-actions" style="margin-top:18px">
+        <button class="btn btn--ghost" data-cclose>Cancel</button>
+        <button class="btn btn--gate" id="claimGo">Pay &amp; redeem</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== DUMMY STRIPE CHECKOUT ===================== -->
+<div class="spay" id="spay">
+  <div id="spayForm">
+    <div class="spay-wrap">
+      <div class="spay-left">
+        <button class="spay-back" id="spayBack">← Back to Champhunt</button>
+        <div class="spay-merchant"><i>C</i>Champhunt Inc.</div>
+        <div class="spay-amt" id="spayAmt">$0.00</div>
+        <div class="spay-item"><span id="spayItem">—</span><b id="spayItemAmt">$0.00</b></div>
+        <div class="spay-total"><span>Total due today</span><span id="spayTotal">$0.00</span></div>
+        <p style="font-size:12.5px;color:#8A97A8;margin-top:10px" id="spayRunsNote"></p>
+      </div>
+      <div class="spay-right">
+        <h3>Pay with card</h3>
+        <div class="spay-field"><label>Email</label><input type="email" value="sameer@champhunt.com"></div>
+        <div class="spay-field"><label>Card information</label><input type="text" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242"></div>
+        <div class="spay-two">
+          <div class="spay-field"><input type="text" placeholder="MM / YY" value="12 / 28"></div>
+          <div class="spay-field"><input type="text" placeholder="CVC" value="123"></div>
+        </div>
+        <div class="spay-field"><label>Name on card</label><input type="text" value="Sameer Kanva"></div>
+        <div class="spay-field"><label>Country</label><select><option>United States</option><option>India</option><option>Canada</option></select></div>
+        <button class="spay-btn" id="spayPay">Pay <span id="spayBtnAmt">$0.00</span></button>
+        <p class="spay-note">Test mode — no real charge. Powered by <b>stripe</b></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="spayDone" style="display:none">
+    <div class="spay-done">
+      <div class="tick">✓</div>
+      <h3>Payment complete</h3>
+      <p id="spayDoneMsg">Your deal is redeemed. A confirmation is on its way to your email.</p>
+      <button class="btn btn--gate" id="spayReturn">Back to deals</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== REPOST MODAL ===================== -->
+<div class="scrim" id="rpScrim" role="dialog" aria-modal="true" aria-labelledby="rpTitle">
+  <div class="modal">
+    <div class="stripe"></div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px">
+        <h3 id="rpTitle" style="flex:1">Repost with thoughts</h3>
+        <button data-rpclose aria-label="Close" style="font-size:20px;line-height:1;color:var(--slate)">×</button>
+      </div>
+
+      <div class="rp-me"><span class="avatar">SK</span><b>You</b></div>
+      <textarea class="rp-text" id="rpText" placeholder="What are your thoughts on this post?"></textarea>
+      <div class="emoji-row" id="emojiRow">
+        <button>🏏</button><button>🔥</button><button>👏</button><button>😮</button><button>💯</button><button>🧡</button>
+      </div>
+
+      <div id="rpQuote"></div>
+
+      <div class="rp-foot">
+        <small>Anyone can see this repost</small>
+        <button class="emoji-btn" id="emojiToggle" aria-label="Add emoji">🙂</button>
+        <button class="btn btn--text" data-rpclose>Cancel</button>
+        <button class="btn btn--gate" id="rpConfirm">Repost</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== CREATE STORY MODAL ===================== -->
+<div class="scrim" id="storyScrim" role="dialog" aria-modal="true" aria-labelledby="storyTitle">
+  <div class="modal">
+    <div class="stripe"></div>
+    <div class="modal-body">
+      <div style="display:flex;align-items:flex-start;gap:12px">
+        <h3 id="storyTitle" style="flex:1">Create story</h3>
+        <button data-sclose aria-label="Close" style="font-size:20px;line-height:1;color:var(--slate)">×</button>
+      </div>
+      <p class="sub">Share a moment with the Sparkle Army.</p>
+
+      <div class="seg">
+        <button class="is-on" data-stype="photo">▣ Photo</button>
+        <button data-stype="video">▶ Video</button>
+      </div>
+
+      <input type="file" id="storyFile" accept="image/*" hidden>
+      <div id="storyStage">
+        <button class="dropzone" id="storyDrop">
+          <span class="dz-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17V5"/><path d="M6 11l6-6 6 6"/><path d="M4 19h16"/></svg>
+          </span>
+          <b id="dzTitle">Upload photo</b>
+          <span id="dzSub">Click to choose a file, or drop one here</span>
+        </button>
+      </div>
+
+      <div class="modal-foot">
+        <small>Stays up for 24 hours</small>
+        <button class="btn btn--gate" id="publishStory" disabled>Publish story</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== JOIN CHALLENGE MODAL ===================== -->
+<div class="scrim" id="joinScrim" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
+  <div class="modal">
+    <div class="stripe"></div>
+    <div class="modal-body">
+      <h3 id="joinTitle">Join this challenge</h3>
+      <p class="sub" id="joinQ">—</p>
+
+      <div class="join-side">Your call: <b id="joinSide">Yes</b></div>
+
+      <div class="field-label">Choose your stake</div>
+      <div class="run-chips">
+        <button class="run-chip" data-runs="500">500</button>
+        <button class="run-chip is-on" data-runs="1000">1,000</button>
+        <button class="run-chip" data-runs="1500">1,500</button>
+      </div>
+      <input class="custom-runs" id="customRuns" type="number" inputmode="numeric" min="500" step="100" placeholder="Or enter a custom amount">
+      <p class="field-hint" id="runsHint">Minimum 500 runs · you have <span id="hintBal">2.510M</span></p>
+
+      <p class="cost-line"><b id="costRuns">1,000</b> runs leave your balance now. If you call it right you take a share of the pool, minus the 10% house cut.</p>
+
+      <div class="modal-actions">
+        <button class="btn btn--gate" id="joinConfirm">Join with 1,000 runs</button>
+      </div>
+      <div style="text-align:center;margin-top:6px"><button class="btn btn--text" data-jclose>Cancel</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <i>✓</i><div><b id="toastTitle">Challenge accepted</b><span id="toastBody">1,000 runs staked.</span></div>
+</div>
+
+<!-- ===================== RULES MODAL ===================== -->
+<div class="scrim" id="rulesScrim" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
+  <div class="modal">
+    <div class="stripe"></div>
+    <div class="modal-body">
+      <h3 id="rulesTitle">How the prediction game works</h3>
+      <p class="sub">Read this before you play.</p>
+      <dl>
+        <div class="rule-line"><dt class="dt-stake">Stake</dt><dd>Every prediction costs <b>1,000 runs</b> to enter.</dd></div>
+        <div class="rule-line"><dt class="dt-correct">Correct</dt><dd>You get <b>1,500 runs</b> back.</dd></div>
+        <div class="rule-line"><dt class="dt-wrong">Wrong</dt><dd>You get <b>nothing</b> back — the stake is lost.</dd></div>
+        <div class="rule-line"><dt class="dt-void">Void</dt><dd>If the question can't be settled you get <b>900 runs</b> back — a <b>100 run</b> entry fee is kept.</dd></div>
+      </dl>
+      <p class="note">You lose a 100-run entry fee on every prediction — even a voided one only returns 900.</p>
+      <div class="modal-actions"><button class="btn btn--ghost" data-close>Not now</button><button class="btn btn--gate" data-close>I agree — let's play</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var views = document.querySelectorAll('.view');
+  function go(name){
+    views.forEach(function(v){ v.classList.toggle('is-active', v.id === 'view-' + name); });
+    document.querySelectorAll('[data-go]').forEach(function(b){ b.classList.toggle('is-active', b.dataset.go === name); });
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ go(b.dataset.go); }); });
+  document.querySelectorAll('[data-jump]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); go('predictions'); }); });
+
+  function tabGroup(sel){
+    var els = document.querySelectorAll(sel);
+    els.forEach(function(el){
+      el.addEventListener('click', function(){
+        els.forEach(function(o){ o.classList.remove('is-on'); });
+        el.classList.add('is-on');
+      });
+    });
+  }
+  tabGroup('[data-feed]'); tabGroup('[data-ptab]'); tabGroup('.mini-tabs button');
+
+  /* ---------- predictions: one question at a time ---------- */
+  var preds = Array.prototype.slice.call(document.querySelectorAll('.pred-card'));
+  var VOTES = [1284, 962, 2117, 741, 1533, 688, 1194, 903, 1650, 2408];
+  var qNow = document.getElementById('qNow'), qAll = document.getElementById('qAll'),
+      qFill = document.getElementById('qFill'), predDone = document.getElementById('predDone'),
+      progress = document.querySelector('.pred-progress'), skipBtn = document.getElementById('skipQ');
+  var qi = 0;
+  qAll.textContent = preds.length;
+
+  function showQ(i){
+    preds.forEach(function(c, n){ c.style.display = (n === i) ? '' : 'none'; });
+    var done = i >= preds.length;
+    predDone.style.display = done ? '' : 'none';
+    progress.style.display = done ? 'none' : '';
+    skipBtn.style.display = done ? 'none' : '';
+    if(!done){
+      qNow.textContent = i + 1;
+      qFill.style.width = ((i + 1) / preds.length * 100) + '%';
+      var card = preds[i];
+      card.style.animation = 'none'; void card.offsetWidth; card.style.animation = '';
+    }
+  }
+  function nextQ(){ qi++; showQ(qi); window.scrollTo(0,0); }
+
+  preds.forEach(function(card, idx){
+    var opts = Array.prototype.slice.call(card.querySelectorAll('.opt'));
+    opts.forEach(function(o){
+      o.addEventListener('click', function(){
+        if(card.dataset.answered) return;
+        if(balance < 1000){ say('Not enough runs', 'A prediction costs 1,000 runs to enter.'); return; }
+        card.dataset.answered = '1';
+        opts.forEach(function(x){ x.classList.remove('is-picked'); });
+        o.classList.add('is-picked');
+
+        applyRuns(-1000, 'Prediction Entry', 'Prediction game stake');
+
+        /* read the crowd split off the legend */
+        var legend = card.querySelectorAll('.split-legend span');
+        var pcts = Array.prototype.map.call(legend, function(l){
+          var m = l.textContent.match(/(\d+)%/); return m ? Number(m[1]) : 50;
+        });
+
+        var rows = opts.map(function(x, n){
+          var label = x.querySelector('b').textContent;
+          var mine = (x === o);
+          return '<div class="res-row' + (mine ? ' is-mine' : '') + '">' +
+                   '<div class="res-top"><b>' + (mine ? '✓ Your pick — ' : '') + label + '</b><em>' + (pcts[n] || 0) + '%</em></div>' +
+                   '<div class="res-bar"><i style="width:' + (pcts[n] || 0) + '%"></i></div>' +
+                 '</div>';
+        }).join('');
+
+        var res = document.createElement('div');
+        res.className = 'pred-result';
+        res.innerHTML = rows +
+          '<p class="res-votes">' + VOTES[idx % VOTES.length].toLocaleString('en-US') + ' fans in · 1,000 runs staked</p>' +
+          '<button class="btn btn--next">Next question →</button>';
+
+        card.querySelector('.pred-opts').style.display = 'none';
+        card.querySelector('.pred-split').style.display = 'none';
+        card.querySelector('.pred-foot').style.display = 'none';
+        card.appendChild(res);
+        res.querySelector('.btn--next').addEventListener('click', nextQ);
+
+        say('Prediction locked in', '1,000 runs staked. New balance ' + fmt(balance) + '.');
+      });
+    });
+  });
+
+  skipBtn.addEventListener('click', nextQ);
+  document.getElementById('replayQ').addEventListener('click', function(){
+    preds.forEach(function(card){
+      delete card.dataset.answered;
+      var r = card.querySelector('.pred-result'); if(r) r.remove();
+      card.querySelector('.pred-opts').style.display = '';
+      card.querySelector('.pred-split').style.display = '';
+      card.querySelector('.pred-foot').style.display = '';
+      card.querySelectorAll('.opt').forEach(function(x){ x.classList.remove('is-picked'); });
+    });
+    qi = 0; showQ(0);
+  });
+  showQ(0);
+
+  /* ---------- challenges: tabs, join flow, balance ---------- */
+  var balance = 2510000;
+  var balEl = document.querySelector('.runs-chip span');
+  var chip  = document.querySelector('.runs-chip');
+  function fmt(n){ return n >= 1000000 ? (n/1000000).toFixed(3) + 'M' : n.toLocaleString('en-US'); }
+  function paintBalance(){
+    balEl.textContent = fmt(balance);
+    var h = document.getElementById('hintBal'); if(h) h.textContent = fmt(balance);
+  }
+  paintBalance();
+
+  /* ---------- toast ---------- */
+  var toast = document.getElementById('toast'),
+      toastT = document.getElementById('toastTitle'),
+      toastB = document.getElementById('toastBody'),
+      toastTimer;
+  function say(title, body){
+    toastT.textContent = title;
+    toastB.textContent = body;
+    toast.classList.add('is-up');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('is-up'); }, 4200);
+  }
+
+  /* ---------- challenges: tabs + join flow ---------- */
+  var ctabs = document.querySelectorAll('[data-ctab]');
+  ctabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      ctabs.forEach(function(o){ o.classList.remove('is-on'); });
+      t.classList.add('is-on');
+      document.querySelectorAll('.chal-card').forEach(function(c){
+        c.style.display = (c.dataset.status === t.dataset.ctab) ? '' : 'none';
+      });
+    });
+  });
+  document.querySelectorAll('.chal-card[data-status="settled"]').forEach(function(c){ c.style.display = 'none'; });
+
+  var jScrim = document.getElementById('joinScrim'),
+      jQ = document.getElementById('joinQ'), jSide = document.getElementById('joinSide'),
+      custom = document.getElementById('customRuns'), hint = document.getElementById('runsHint'),
+      costEl = document.getElementById('costRuns'), joinConfirm = document.getElementById('joinConfirm'),
+      chips = document.querySelectorAll('.run-chip');
+  var currentChal = null, stake = 1000;
+
+  function validate(){
+    var ok = stake >= 500 && stake <= balance;
+    hint.classList.toggle('is-bad', !ok);
+    if(stake < 500) hint.textContent = 'Minimum stake is 500 runs.';
+    else if(stake > balance) hint.textContent = 'That is more than your balance of ' + fmt(balance) + '.';
+    else hint.textContent = 'Minimum 500 runs · you have ' + fmt(balance);
+    costEl.textContent = stake.toLocaleString('en-US');
+    joinConfirm.textContent = ok ? 'Join with ' + stake.toLocaleString('en-US') + ' runs' : 'Choose a valid stake';
+    joinConfirm.disabled = !ok;
+    return ok;
+  }
+  function setStake(n, fromChip){
+    stake = n;
+    chips.forEach(function(c){ c.classList.toggle('is-on', fromChip && Number(c.dataset.runs) === n); });
+    validate();
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click', function(){ custom.value = ''; setStake(Number(c.dataset.runs), true); });
+  });
+  custom.addEventListener('input', function(){ setStake(custom.value === '' ? 0 : Number(custom.value), false); });
+
+  function openJoin(card, side){
+    currentChal = { card:card, side:side };
+    jQ.textContent = card.querySelector('h3').textContent;
+    jSide.textContent = side;
+    custom.value = '';
+    setStake(1000, true);
+    jScrim.classList.add('is-open');
+  }
+  function closeJoin(){ jScrim.classList.remove('is-open'); }
+  jScrim.querySelectorAll('[data-jclose]').forEach(function(b){ b.addEventListener('click', closeJoin); });
+  jScrim.addEventListener('click', function(e){ if(e.target === jScrim) closeJoin(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeJoin(); });
+
+  document.querySelectorAll('.chal-card[data-status="live"]').forEach(function(card){
+    var btns = card.querySelectorAll('[data-yn]');
+    btns.forEach(function(b){
+      b.addEventListener('click', function(){
+        if(card.classList.contains('is-joined')) return;
+        btns.forEach(function(x){ x.classList.remove('is-on'); });
+        b.classList.add('is-on');
+        openJoin(card, b.dataset.yn);
+      });
+    });
+    card.querySelector('[data-join]').addEventListener('click', function(){
+      var picked = card.querySelector('[data-yn].is-on');
+      if(!picked){ say('Pick a side first', 'Choose Yes or No, then set your stake.'); return; }
+      openJoin(card, picked.dataset.yn);
+    });
+  });
+
+  joinConfirm.addEventListener('click', function(){
+    if(!validate() || !currentChal) return;
+    var card = currentChal.card, side = currentChal.side, amount = stake;
+    applyRuns(-amount, 'Challenge Entry', 'Challenge stake — ' + side);
+
+    card.classList.add('is-joined');
+    card.querySelectorAll('[data-yn]').forEach(function(b){
+      b.classList.add('is-locked');
+      b.disabled = true;
+      b.classList.toggle('is-on', b.dataset.yn === side);
+    });
+    card.querySelector('.chal-actions').innerHTML =
+      '<span class="accepted">✓ Accepted <em>' + side + ' · ' + amount.toLocaleString('en-US') + ' runs</em></span>' +
+      '<button class="btn btn--ghost btn--sm" data-invite>Challenge friends</button>';
+    card.querySelector('[data-invite]').addEventListener('click', function(){
+      say('Invite link copied', 'Paste it into a Pitch post or send it straight to a friend.');
+    });
+
+    var rec = document.getElementById('recJoined');
+    if(rec) rec.textContent = Number(rec.textContent) + 1;
+
+    closeJoin();
+    say('Challenge accepted', amount.toLocaleString('en-US') + ' runs staked on "' + side + '". New balance ' + fmt(balance) + '.');
+    currentChal = null;
+  });
+
+  /* ---------- runs ledger ---------- */
+  var ledger = [
+    { day:'Today',       time:'11:18 pm', title:'Pitch Run',         desc:'Received 4 runs — someone backed your post', delta:4 },
+    { day:'Today',       time:'11:04 pm', title:'Pitch Run',         desc:'Earned 20 runs for commenting on a post',     delta:20 },
+    { day:'Today',       time:'09:29 pm', title:'Prediction Entry',  desc:'Prediction game stake',                       delta:-1000 },
+    { day:'Today',       time:'09:22 pm', title:'Challenge Entry',   desc:'Challenge stake',                             delta:-1000 },
+    { day:'Yesterday',   time:'07:48 pm', title:'Prediction Entry',  desc:'Prediction game stake',                       delta:-1000 },
+    { day:'Yesterday',   time:'06:15 pm', title:'Pitch Run',         desc:'Earned 60 runs for sharing a post',           delta:60 },
+    { day:'20 Aug 2026', time:'09:28 am', title:'Daily Login Bonus', desc:'Earned 100 runs for your daily login streak', delta:100 },
+    { day:'20 Aug 2026', time:'08:02 am', title:'Challenge Entry',   desc:'Challenge stake',                             delta:-500 }
+  ];
+  var txFilter = 'all', lastView = 'pitch';
+
+  function applyRuns(delta, title, desc){
+    balance += delta;
+    paintBalance();
+    chip.classList.remove('is-flash'); void chip.offsetWidth; chip.classList.add('is-flash');
+    ledger.unshift({
+      day:'Today',
+      time:new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'}).toLowerCase(),
+      title:title, desc:desc, delta:delta
+    });
+    if(document.getElementById('view-runs').classList.contains('is-active')) renderLedger();
+  }
+
+  function renderLedger(){
+    var list = document.getElementById('txList');
+    var running = balance, runningAt = [];
+    ledger.forEach(function(t){ runningAt.push(running); running -= t.delta; });
+
+    var rows = ledger.filter(function(t){
+      return txFilter === 'all' || (txFilter === 'earned' ? t.delta > 0 : t.delta < 0);
+    });
+
+    var html = '', day = null;
+    if(!rows.length){
+      html = '<p class="tx-empty">Nothing here yet.</p>';
+    } else {
+      rows.forEach(function(t){
+        if(t.day !== day){ day = t.day; html += '<div class="tx-day">' + day + '</div>'; }
+        var up = t.delta > 0, i = ledger.indexOf(t);
+        html += '<div class="tx">' +
+          '<span class="tx-ic ' + (up ? 'earn' : 'spend') + '">' + (up ? '⚡' : '◎') + '</span>' +
+          '<span class="tx-main"><b>' + t.title + '</b><span>' + t.time + ' · ' + t.desc + '</span></span>' +
+          '<span class="tx-right"><b class="' + (up ? 'up' : 'down') + '">' + (up ? '+' : '−') +
+            Math.abs(t.delta).toLocaleString('en-US') + '</b><span>' + runningAt[i].toLocaleString('en-US') + '</span></span>' +
+        '</div>';
+      });
+    }
+    list.innerHTML = html;
+
+    var earned = 0, spent = 0;
+    ledger.forEach(function(t){ if(t.delta > 0) earned += t.delta; else spent += t.delta; });
+    document.getElementById('balBig').innerHTML = balance.toLocaleString('en-US') + '<em>runs</em>';
+    document.getElementById('balEarned').textContent = '+' + earned.toLocaleString('en-US');
+    document.getElementById('balSpent').textContent = '−' + Math.abs(spent).toLocaleString('en-US');
+    document.getElementById('balCount').textContent = ledger.length;
+    document.getElementById('txCount').textContent = 'Showing ' + rows.length + ' of ' + ledger.length;
+    document.getElementById('txTitle').textContent =
+      txFilter === 'all' ? 'All transactions' : (txFilter === 'earned' ? 'Earned' : 'Spent');
+  }
+
+  document.querySelectorAll('[data-tx]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-tx]').forEach(function(o){ o.classList.remove('is-on'); });
+      b.classList.add('is-on');
+      txFilter = b.dataset.tx;
+      renderLedger();
+    });
+  });
+  document.getElementById('openRuns').addEventListener('click', function(){
+    var cur = document.querySelector('.view.is-active');
+    if(cur && cur.id !== 'view-runs') lastView = cur.id.replace('view-','');
+    renderLedger();
+    go('runs');
+  });
+  document.getElementById('runsBack').addEventListener('click', function(){ go(lastView); });
+
+  /* ---------- deals: claim → runs or Stripe ---------- */
+  var claimScrim = document.getElementById('claimScrim'),
+      claimName = document.getElementById('claimName'),
+      lineCash = document.getElementById('lineCash'),
+      lineRuns = document.getElementById('lineRuns'),
+      claimBal = document.getElementById('claimBal'),
+      claimGo = document.getElementById('claimGo'),
+      spay = document.getElementById('spay'),
+      current_deal = null;
+
+  function money(n){ return '$' + n.toFixed(2); }
+
+  function openClaim(btn){
+    var cash = Number(btn.dataset.cash || 0),
+        runs = Number(btn.dataset.runs || 0),
+        card = btn.closest('.deal');
+    current_deal = { btn:btn, card:card, cash:cash, runs:runs, title:btn.dataset.title };
+
+    claimName.textContent = btn.dataset.title;
+    lineCash.style.display = cash ? '' : 'none';
+    lineCash.querySelector('b').textContent = money(cash);
+    lineRuns.style.display = runs ? '' : 'none';
+    lineRuns.querySelector('b').textContent = '−' + runs.toLocaleString('en-US') + ' runs';
+
+    var short = runs > balance;
+    claimBal.textContent = balance.toLocaleString('en-US') + ' runs';
+    claimBal.className = short ? 'short' : '';
+    claimGo.disabled = short;
+    claimGo.textContent = short ? 'Not enough runs'
+      : (cash ? 'Pay ' + money(cash) + ' & redeem' : 'Redeem for runs');
+    claimScrim.classList.add('is-open');
+  }
+  function closeClaim(){ claimScrim.classList.remove('is-open'); }
+  claimScrim.querySelectorAll('[data-cclose]').forEach(function(b){ b.addEventListener('click', closeClaim); });
+  claimScrim.addEventListener('click', function(e){ if(e.target === claimScrim) closeClaim(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeClaim(); });
+
+  function markRedeemed(d){
+    if(d.runs) applyRuns(-d.runs, 'Deal Redeemed', d.title);
+    d.card.dataset.state = 'redeemed';
+    d.btn.disabled = true;
+    d.btn.className = 'btn btn--ghost';
+    d.btn.textContent = '✓ Redeemed today';
+    say('Deal redeemed', d.title + ' — details sent to your email.');
+  }
+
+  claimGo.addEventListener('click', function(){
+    if(!current_deal) return;
+    var d = current_deal;
+    closeClaim();
+    if(d.cash > 0){ openStripe(d); } else { markRedeemed(d); current_deal = null; }
+  });
+
+  /* dummy Stripe checkout */
+  function openStripe(d){
+    document.getElementById('spayForm').style.display = '';
+    document.getElementById('spayDone').style.display = 'none';
+    document.getElementById('spayAmt').textContent = money(d.cash);
+    document.getElementById('spayTotal').textContent = money(d.cash);
+    document.getElementById('spayItemAmt').textContent = money(d.cash);
+    document.getElementById('spayItem').textContent = d.title;
+    document.getElementById('spayBtnAmt').textContent = money(d.cash);
+    document.getElementById('spayRunsNote').textContent =
+      d.runs ? d.runs.toLocaleString('en-US') + ' runs are deducted from your balance once the payment clears.' : '';
+    spay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeStripe(){
+    spay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('spayBack').addEventListener('click', function(){
+    closeStripe();
+    say('Payment cancelled', 'Nothing was charged and no runs were used.');
+    current_deal = null;
+  });
+  document.getElementById('spayPay').addEventListener('click', function(){
+    var btn = this;
+    btn.disabled = true;
+    btn.textContent = 'Processing…';
+    setTimeout(function(){
+      btn.disabled = false;
+      btn.innerHTML = 'Pay <span id="spayBtnAmt">' + money(current_deal ? current_deal.cash : 0) + '</span>';
+      document.getElementById('spayForm').style.display = 'none';
+      document.getElementById('spayDone').style.display = '';
+      if(current_deal){
+        document.getElementById('spayDoneMsg').textContent =
+          current_deal.title + ' is redeemed.' + (current_deal.runs ? ' ' + current_deal.runs.toLocaleString('en-US') + ' runs deducted.' : '');
+        markRedeemed(current_deal);
+      }
+    }, 1400);
+  });
+  document.getElementById('spayReturn').addEventListener('click', function(){
+    closeStripe();
+    current_deal = null;
+  });
+
+  document.querySelectorAll('[data-claim]').forEach(function(b){
+    b.addEventListener('click', function(){ openClaim(b); });
+  });
+
+  /* ---------- profile ---------- */
+  document.getElementById('openProfile').addEventListener('click', function(){
+    var cur = document.querySelector('.view.is-active');
+    if(cur && cur.id !== 'view-profile') lastView = cur.id.replace('view-','');
+    document.getElementById('pfRuns').textContent = balance.toLocaleString('en-US') + ' Runs';
+    go('profile');
+  });
+  document.getElementById('pfBack').addEventListener('click', function(){ go(lastView); });
+  document.getElementById('pfShare').addEventListener('click', function(){
+    say('More suggestions', 'Loaded another five people to follow.');
+  });
+  var pfTabs = document.querySelectorAll('[data-pf]');
+  var pfPanes = { posts:'pfPosts', highlights:'pfHighlights', saved:'pfSaved' };
+  pfTabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      pfTabs.forEach(function(o){ o.classList.remove('is-on'); });
+      t.classList.add('is-on');
+      Object.keys(pfPanes).forEach(function(k){
+        document.getElementById(pfPanes[k]).style.display = (k === t.dataset.pf) ? '' : 'none';
+      });
+    });
+  });
+
+  /* ---------- pitch: post actions (runs / comment / repost / share) ---------- */
+  var ICONS = {
+    runs:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M5.6 5.6l12.8 12.8"/></svg>',
+    comment:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 01-11.9 7.6L3 21l1.9-6A8.4 8.4 0 1121 11.5z"/></svg>',
+    repost:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2l3 3-3 3"/><path d="M20 5H8a4 4 0 00-4 4v1"/><path d="M7 22l-3-3 3-3"/><path d="M4 19h12a4 4 0 004-4v-1"/></svg>',
+    share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 15v3a2 2 0 002 2h12a2 2 0 002-2v-3"/></svg>'
+  };
+  function parseCount(t){
+    var m = String(t).trim().match(/^([\d.]+)(K|M)?/);
+    if(!m) return 0;
+    var n = parseFloat(m[1]);
+    if(m[2] === 'K') n *= 1000; if(m[2] === 'M') n *= 1000000;
+    return Math.round(n);
+  }
+  function short(n){
+    if(n >= 1000000) return (n/1000000).toFixed(1).replace('.0','') + 'M';
+    if(n >= 1000) return (n/1000).toFixed(1).replace('.0','') + 'K';
+    return String(n);
+  }
+
+  /* ---------- follow / following ---------- */
+  function wireFollow(scope){
+    scope.querySelectorAll('[data-follow]').forEach(function(b){
+      if(b.dataset.wired) return;
+      b.dataset.wired = '1';
+      b.addEventListener('click', function(){
+        var on = b.classList.toggle('is-following');
+        b.textContent = on ? 'Following' : 'Follow';
+        var head = b.closest('.post-head') || b.closest('.pymk-row');
+        var who = head ? (head.querySelector('.post-id b') || head.querySelector('b')).textContent : 'them';
+        say(on ? 'Following ' + who : 'Unfollowed ' + who,
+            on ? 'Their pitches will show up in your feed.' : 'Removed from your feed.');
+      });
+    });
+  }
+  wireFollow(document);
+
+  /* ---------- repost with thoughts ---------- */
+  var rpScrim = document.getElementById('rpScrim'),
+      rpText  = document.getElementById('rpText'),
+      rpQuote = document.getElementById('rpQuote'),
+      rpConfirm = document.getElementById('rpConfirm'),
+      emojiRow = document.getElementById('emojiRow'),
+      rpSource = null, rpButton = null;
+
+  function buildQuote(post){
+    var head = post.querySelector('.post-head');
+    var name = head ? head.querySelector('.post-id b').textContent : 'Champhunt';
+    var when = head ? head.querySelector('.post-id span').textContent : '';
+    var init = head ? head.querySelector('.avatar').textContent : 'CH';
+    var body = post.querySelector('.post-body');
+    var media = post.querySelector('.post-media');
+
+    var q = document.createElement('div');
+    q.className = 'quote';
+    q.innerHTML = '<div class="quote-head"><span class="avatar">' + init + '</span><b>' + name + '</b><span>' + when + '</span></div>' +
+                  (body ? '<p>' + body.textContent.trim() + '</p>' : '');
+    if(media) q.appendChild(media.cloneNode(true));
+    return q;
+  }
+
+  function openRepost(post, btn){
+    if(btn.classList.contains('is-on')){
+      btn.classList.remove('is-on');
+      btn.lastChild.textContent = 'Repost';
+      say('Repost removed', 'Taken off your Pitch.');
+      return;
+    }
+    rpSource = post; rpButton = btn;
+    rpText.value = '';
+    emojiRow.classList.remove('is-on');
+    rpQuote.innerHTML = '';
+    rpQuote.appendChild(buildQuote(post));
+    rpScrim.classList.add('is-open');
+    rpText.focus();
+  }
+  function closeRepost(){ rpScrim.classList.remove('is-open'); }
+  rpScrim.querySelectorAll('[data-rpclose]').forEach(function(b){ b.addEventListener('click', closeRepost); });
+  rpScrim.addEventListener('click', function(e){ if(e.target === rpScrim) closeRepost(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeRepost(); });
+
+  document.getElementById('emojiToggle').addEventListener('click', function(){ emojiRow.classList.toggle('is-on'); });
+  emojiRow.querySelectorAll('button').forEach(function(e){
+    e.addEventListener('click', function(){ rpText.value += e.textContent; rpText.focus(); });
+  });
+
+  rpConfirm.addEventListener('click', function(){
+    if(!rpSource) return;
+    var thoughts = rpText.value.trim();
+
+    var art = document.createElement('article');
+    art.className = 'card post';
+    art.innerHTML = '<div class="post-head"><div class="avatar">SK</div><div class="post-id"><b>You</b><span>Just now · Reposted</span></div></div>' +
+      (thoughts ? '<div class="post-body">' + thoughts.replace(/[<>]/g,'') + '</div>' : '');
+    art.appendChild(buildQuote(rpSource));
+    art.insertAdjacentHTML('beforeend',
+      '<div class="post-stats"><span class="runs-count"><b>0</b> Runs</span><span class="cmt-count" data-open-cmt>0 comments</span></div>' +
+      '<div class="post-comments"><div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>' +
+      '<div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div><div class="cmt-list"></div></div>' +
+      '<div class="post-foot">' +
+        '<button class="act-runs" data-act="runs">' + ICONS.runs + 'Runs</button>' +
+        '<button class="act-comment" data-act="comment">' + ICONS.comment + 'Comment</button>' +
+        '<button class="act-repost" data-act="repost">' + ICONS.repost + 'Repost</button>' +
+        '<button class="act-share" data-act="share">' + ICONS.share + 'Share</button>' +
+      '</div>');
+
+    document.querySelector('.switch').insertAdjacentElement('afterend', art);
+    wirePost(art);
+
+    rpButton.classList.add('is-on');
+    rpButton.lastChild.textContent = 'Reposted';
+    closeRepost();
+    say('Reposted', thoughts ? 'Your thoughts are live on the Pitch.' : 'It is on your Pitch now too.');
+    rpSource = null; rpButton = null;
+  });
+
+  function wirePost(post){
+    var stats  = post.querySelector('.post-stats'),
+        runsEl = stats && stats.querySelector('.runs-count b'),
+        cmtEl  = stats && stats.querySelector('.cmt-count'),
+        box    = post.querySelector('.post-comments'),
+        list   = post.querySelector('.cmt-list'),
+        input  = box && box.querySelector('.cmt-compose input'),
+        foot   = post.querySelector('.post-foot'),
+        runsBtn = post.querySelector('.act-runs'),
+        cmtBtn  = post.querySelector('.act-comment'),
+        given = 0, pop = null;
+
+    function openComments(open){
+      if(!box) return;
+      box.classList.toggle('is-open', open);
+      cmtBtn.classList.toggle('is-on', open);
+      if(open && input) input.focus();
+    }
+    if(cmtEl) cmtEl.addEventListener('click', function(){ openComments(!box.classList.contains('is-open')); });
+
+    /* ---- runs: choose 2 / 4 / 6 ---- */
+    function closePop(){ if(pop){ pop.remove(); pop = null; } }
+    document.addEventListener('click', function(e){
+      if(pop && !pop.contains(e.target) && !runsBtn.contains(e.target)) closePop();
+    });
+
+    function give(amount, colorClass){
+      if(balance < amount){ say('Not enough runs', 'You need ' + amount + ' runs to back this pitch.'); return; }
+      given = amount;
+      applyRuns(-amount, 'Pitch Run', 'Backed a post with ' + amount + ' runs');
+      if(runsEl) runsEl.textContent = short(parseCount(runsEl.textContent) + amount);
+
+      runsBtn.classList.add('is-on');
+      runsBtn.innerHTML = '<span class="mini-coin ' + colorClass + '">' + amount + '</span>Runs';
+
+      var media = post.querySelector('.post-media') || post.querySelector('.post-body') || post;
+      var burst = document.createElement('span');
+      burst.className = 'coin-burst ' + colorClass;
+      burst.textContent = amount;
+      var host = media.classList.contains('post-media') ? media : post;
+      host.style.position = 'relative';
+      host.appendChild(burst);
+      setTimeout(function(){ burst.remove(); }, 1000);
+
+      say('Runs given', amount + ' runs sent to this pitch.');
+    }
+
+    runsBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      if(given){ say('Already backed', 'You gave ' + given + ' runs to this pitch.'); return; }
+      if(pop){ closePop(); return; }
+      pop = document.createElement('div');
+      pop.className = 'runs-pop';
+      pop.innerHTML = '<b>Choose your runs</b><div class="coin-row">' +
+        '<button class="coin coin-2" data-give="2">2</button>' +
+        '<button class="coin coin-4" data-give="4">4</button>' +
+        '<button class="coin coin-6" data-give="6">6</button></div>';
+      foot.appendChild(pop);
+      pop.querySelectorAll('[data-give]').forEach(function(c){
+        c.addEventListener('click', function(ev){
+          ev.stopPropagation();
+          closePop();
+          give(Number(c.dataset.give), 'coin-' + c.dataset.give);
+        });
+      });
+    });
+
+    /* ---- comment / repost / share ---- */
+    cmtBtn.addEventListener('click', function(){ openComments(!box.classList.contains('is-open')); });
+
+    post.querySelector('.act-repost').addEventListener('click', function(){
+      openRepost(post, this);
+    });
+    post.querySelector('.act-share').addEventListener('click', function(){
+      say('Link copied', 'Paste it anywhere to share this pitch.');
+    });
+
+    /* ---- comment submit + reply ---- */
+    var send = post.querySelector('[data-send-cmt]');
+    if(send && input){
+      function submit(){
+        var v = input.value.trim();
+        if(!v) return;
+        var row = document.createElement('div');
+        row.className = 'cmt';
+        row.innerHTML = '<span class="avatar">SK</span><div class="cmt-body">' +
+          '<div class="cmt-head"><b>You</b><span class="cmt-time">Just now</span></div>' +
+          '<p>' + v.replace(/[<>]/g,'') + '</p><button class="cmt-reply">Reply</button></div>';
+        list.insertBefore(row, list.firstChild);
+        wireReplies(row);
+        input.value = '';
+        if(cmtEl) cmtEl.textContent = (parseCount(cmtEl.textContent) + 1) + ' comments';
+        applyRuns(20, 'Pitch Run', 'Earned 20 runs for commenting on a post');
+      }
+      send.addEventListener('click', submit);
+      input.addEventListener('keydown', function(e){ if(e.key === 'Enter') submit(); });
+    }
+    function wireReplies(scope){
+      scope.querySelectorAll('.cmt-reply').forEach(function(r){
+        if(r.dataset.wired) return;
+        r.dataset.wired = '1';
+        r.addEventListener('click', function(){
+          var name = r.closest('.cmt-body').querySelector('b').textContent;
+          input.value = '@' + name + ' ';
+          input.focus();
+        });
+      });
+    }
+    if(box) wireReplies(box);
+
+    post.querySelectorAll('.gif-btn').forEach(function(g){
+      g.addEventListener('click', function(){ say('GIF picker', 'Not wired up in this prototype.'); });
+    });
+  }
+  document.querySelectorAll('.post').forEach(wirePost);
+  wireFollow(document);
+
+  /* ---------- pitch: create story ---------- */
+  var sScrim = document.getElementById('storyScrim'),
+      sFile  = document.getElementById('storyFile'),
+      sDropWrap = document.getElementById('storyStage'),
+      sPublish = document.getElementById('publishStory'),
+      myRing = document.getElementById('myStoryRing'),
+      storyType = 'photo', storyURL = null;
+
+  function resetStory(){
+    storyURL = null;
+    sPublish.disabled = true;
+    sFile.value = '';
+    sDropWrap.innerHTML =
+      '<button class="dropzone" id="storyDrop">' +
+        '<span class="dz-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17V5"/><path d="M6 11l6-6 6 6"/><path d="M4 19h16"/></svg></span>' +
+        '<b>Upload ' + storyType + '</b>' +
+        '<span>Click to choose a file, or drop one here</span>' +
+      '</button>';
+    wireDrop();
+  }
+  function wireDrop(){
+    var dz = document.getElementById('storyDrop');
+    if(!dz) return;
+    dz.addEventListener('click', function(){ sFile.click(); });
+    ['dragenter','dragover'].forEach(function(ev){
+      dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.add('is-over'); });
+    });
+    ['dragleave','drop'].forEach(function(ev){
+      dz.addEventListener(ev, function(e){ e.preventDefault(); dz.classList.remove('is-over'); });
+    });
+    dz.addEventListener('drop', function(e){
+      if(e.dataTransfer.files && e.dataTransfer.files[0]) useStoryFile(e.dataTransfer.files[0]);
+    });
+  }
+  function useStoryFile(file){
+    if(storyURL) URL.revokeObjectURL(storyURL);
+    storyURL = URL.createObjectURL(file);
+    var tag = storyType === 'video'
+      ? '<video src="' + storyURL + '" controls></video>'
+      : '<img src="' + storyURL + '" alt="Story preview">';
+    sDropWrap.innerHTML = '<div class="preview-wrap">' + tag + '<button class="media-remove" id="storyRemove" aria-label="Remove file">×</button></div>';
+    document.getElementById('storyRemove').addEventListener('click', resetStory);
+    sPublish.disabled = false;
+  }
+  sFile.addEventListener('change', function(){ if(sFile.files[0]) useStoryFile(sFile.files[0]); });
+
+  document.querySelectorAll('[data-stype]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('[data-stype]').forEach(function(x){ x.classList.remove('is-on'); });
+      b.classList.add('is-on');
+      storyType = b.dataset.stype;
+      sFile.setAttribute('accept', storyType === 'video' ? 'video/*' : 'image/*');
+      resetStory();
+    });
+  });
+
+  document.getElementById('openStory').addEventListener('click', function(){
+    resetStory();
+    sScrim.classList.add('is-open');
+  });
+  function closeStory(){ sScrim.classList.remove('is-open'); }
+  sScrim.querySelectorAll('[data-sclose]').forEach(function(b){ b.addEventListener('click', closeStory); });
+  sScrim.addEventListener('click', function(e){ if(e.target === sScrim) closeStory(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeStory(); });
+
+  sPublish.addEventListener('click', function(){
+    if(!storyURL) return;
+    if(storyType === 'photo'){
+      myRing.classList.add('has-img');
+      myRing.innerHTML = '<img src="' + storyURL + '" alt="">';
+    } else {
+      myRing.textContent = '▶';
+    }
+    closeStory();
+    say('Story published', 'Live on your profile for the next 24 hours.');
+  });
+
+  /* ---------- pitch: composer ---------- */
+  var cInput = document.querySelector('.composer input[type="text"]'),
+      cFile = document.getElementById('postFile'),
+      cAttach = document.getElementById('postAttach'),
+      poll = document.getElementById('pollFields'),
+      postBtn = document.getElementById('postBtn'),
+      feedSwitch = document.querySelector('.switch'),
+      attachURL = null;
+
+  function canPost(){
+    postBtn.disabled = !(cInput.value.trim() || attachURL);
+  }
+  cInput.addEventListener('input', canPost);
+
+  document.querySelectorAll('[data-comp]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var kind = b.dataset.comp;
+      if(kind === 'photo' || kind === 'video'){
+        cFile.setAttribute('accept', kind === 'video' ? 'video/*' : 'image/*');
+        cFile.click();
+      } else if(kind === 'poll'){
+        b.classList.toggle('is-on');
+        poll.classList.toggle('is-on');
+        canPost();
+      } else {
+        cInput.focus();
+      }
+    });
+  });
+  cFile.addEventListener('change', function(){
+    if(!cFile.files[0]) return;
+    if(attachURL) URL.revokeObjectURL(attachURL);
+    attachURL = URL.createObjectURL(cFile.files[0]);
+    cAttach.innerHTML = '<div class="composer-attach"><img src="' + attachURL + '" alt="Attached"><button class="media-remove" id="attachRemove" aria-label="Remove attachment">×</button></div>';
+    document.getElementById('attachRemove').addEventListener('click', function(){
+      cAttach.innerHTML = ''; attachURL = null; cFile.value = ''; canPost();
+    });
+    canPost();
+  });
+
+  postBtn.addEventListener('click', function(){
+    var text = cInput.value.trim();
+    var opts = poll.classList.contains('is-on')
+      ? Array.prototype.map.call(poll.querySelectorAll('input'), function(i){ return i.value.trim(); }).filter(Boolean)
+      : [];
+
+    var html = '<div class="post-head"><div class="avatar">SK</div><div class="post-id"><b>You</b><span>Just now · Fremont, CA</span></div></div>';
+    if(text) html += '<div class="post-body">' + text.replace(/[<>]/g, '') + '</div>';
+    if(attachURL) html += '<div class="post-media" style="display:block"><img src="' + attachURL + '" alt=""></div>';
+    if(opts.length) html += '<div class="poll-view">' + opts.map(function(o){ return '<div>' + o.replace(/[<>]/g,'') + '</div>'; }).join('') + '</div>';
+    html += '<div class="post-stats"><span class="runs-count"><b>50</b> Runs</span><span class="cmt-count" data-open-cmt>0 comments</span></div>' +
+      '<div class="post-comments"><div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>' +
+        '<div class="cmt-tools"><button class="gif-btn">GIF</button><button class="btn btn--gate btn--sm" data-send-cmt>Comment</button></div><div class="cmt-list"></div></div>' +
+      '<div class="post-foot">' +
+        '<button class="act-runs" data-act="runs">' + ICONS.runs + 'Runs</button>' +
+        '<button class="act-comment" data-act="comment">' + ICONS.comment + 'Comment</button>' +
+        '<button class="act-repost" data-act="repost">' + ICONS.repost + 'Repost</button>' +
+        '<button class="act-share" data-act="share">' + ICONS.share + 'Share</button>' +
+      '</div>';
+
+    var art = document.createElement('article');
+    art.className = 'card post';
+    art.innerHTML = html;
+    feedSwitch.insertAdjacentElement('afterend', art);
+    wirePost(art);
+
+    applyRuns(50, 'Pitch Run', 'Earned 50 runs for sharing a post');
+
+    cInput.value = ''; cAttach.innerHTML = ''; attachURL = null; cFile.value = '';
+    poll.classList.remove('is-on');
+    poll.querySelectorAll('input').forEach(function(i){ i.value = ''; });
+    document.querySelectorAll('[data-comp]').forEach(function(x){ x.classList.remove('is-on'); });
+    canPost();
+    say('Pitch posted', 'Your post is live on the Global Pitch · +50 runs.');
+  });
+
+  /* countdowns */
+  var clocks = [];
+  document.querySelectorAll('[data-countdown]').forEach(function(el){
+    var p = el.dataset.countdown.split(':').map(Number);
+    clocks.push({ el:el, secs:p[0]*3600 + p[1]*60 + p[2], style:(/left/.test(el.textContent) ? 'left' : (/Ends in/.test(el.textContent) ? 'long' : 'clock')) });
+  });
+  function pad(n){ return String(n).padStart(2,'0'); }
+  setInterval(function(){
+    clocks.forEach(function(c){
+      if(c.secs <= 0) return;
+      c.secs--;
+      var h = Math.floor(c.secs/3600), m = Math.floor(c.secs%3600/60), s = c.secs%60, d = Math.floor(h/24);
+      if(c.style === 'left'){
+        c.el.textContent = '⏱ ' + (d > 0 ? d + 'd ' + (h%24) + 'h ' + m + 'm left' : h + 'h ' + m + 'm left');
+      } else if(c.style === 'long'){
+        c.el.textContent = 'Ends in ' + h + 'h ' + m + 'm ' + s + 's';
+      } else {
+        c.el.textContent = pad(h) + ':' + pad(m) + ':' + pad(s);
+      }
+    });
+  }, 1000);
+})();
+</script>
+</body>
+</html>
