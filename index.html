@@ -657,6 +657,54 @@ img{max-width:100%;display:block}
 }
 .settled b{color:var(--win)}
 
+/* ============================================================ SFU CLUB SPACE */
+.nav-new{
+  margin-left:auto;padding:3px 8px;border-radius:20px;background:var(--gate);color:#fff;
+  font-family:var(--f-label);font-weight:700;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  animation:newPulse 2.4s ease-in-out infinite;
+}
+@keyframes newPulse{0%,100%{box-shadow:0 0 0 0 rgba(244,104,31,.5)}50%{box-shadow:0 0 0 5px rgba(244,104,31,0)}}
+.club-hero{
+  position:relative;overflow:hidden;border-radius:var(--r);margin-bottom:18px;
+  background:linear-gradient(100deg,#0B1D35,#26507F);color:#fff;padding:22px 24px;
+}
+.club-hero::after{
+  content:"";position:absolute;right:-50px;top:-40px;width:300px;height:300px;
+  background:repeating-linear-gradient(115deg,rgba(244,104,31,.5) 0 16px,transparent 16px 26px,rgba(41,171,226,.38) 26px 36px,transparent 36px 54px);
+  transform:rotate(8deg);opacity:.55;
+}
+.club-top{position:relative;z-index:1;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.club-crest{
+  width:58px;height:58px;flex:none;display:grid;place-items:center;
+  background:var(--gate);clip-path:polygon(50% 0,100% 26%,100% 74%,50% 100%,0 74%,0 26%);
+  font-family:var(--f-display);font-style:italic;font-weight:800;font-size:20px;color:#fff;
+}
+.club-id{flex:1;min-width:220px}
+.club-id .eyebrow{color:var(--bay)}
+.club-id h1{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:29px;text-transform:uppercase;line-height:1.02}
+.club-id p{font-size:13.5px;color:#A9C2D8;margin-top:3px}
+.club-stats{position:relative;z-index:1;display:flex;gap:26px;margin-top:16px;flex-wrap:wrap}
+.club-stat b{display:block;font-family:var(--f-data);font-weight:600;font-size:18px;color:var(--gate)}
+.club-stat span{font-family:var(--f-label);font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#A9C2D8}
+.club-seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);margin-bottom:18px}
+.club-seg button{padding:12px 6px;font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate)}
+.club-seg button:hover{background:var(--haze);color:var(--navy)}
+.club-seg button.is-on{background:var(--gate);color:#fff}
+.club-note{font-size:13.5px;color:var(--slate);margin-bottom:14px}
+.cp-card{padding:18px;margin-bottom:14px}
+.cp-card h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:18px;text-transform:uppercase;color:var(--navy);line-height:1.14;margin-bottom:14px}
+.cp-opts{display:flex;flex-direction:column;gap:9px}
+.cp-opt{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left;
+  padding:12px 14px;border:1.5px solid var(--line);border-radius:5px;background:var(--paper);
+  font-family:var(--f-label);font-weight:700;font-size:14.5px;color:var(--navy);
+}
+.cp-opt:hover{border-color:var(--bay)}
+.cp-opt.is-picked{border-color:var(--gate);background:rgba(244,104,31,.07)}
+.cp-opt em{font-style:normal;font-family:var(--f-data);font-size:12px;color:var(--gate)}
+.cp-foot{display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-family:var(--f-data);font-size:12px;color:var(--slate)}
+@media (max-width:640px){ .club-seg{grid-template-columns:repeat(2,1fr)} }
+
 /* toast — sits clear of the runs chip, never off-screen */
 .toast{
   position:fixed;right:22px;bottom:22px;z-index:120;
@@ -875,6 +923,7 @@ img{max-width:100%;display:block}
     <button class="nav-item is-active" data-go="pitch"><img class="nav-ic nav-ic-off" src="pitch no.png" alt=""><img class="nav-ic nav-ic-on" src="pitch selected icon.png" alt="">Pitch</button>
     <button class="nav-item" data-go="predictions"><img class="nav-ic nav-ic-off" src="arena icon.png" alt=""><img class="nav-ic nav-ic-on" src="arena selected icon.png" alt="">Predictions</button>
     <button class="nav-item" data-go="challenges"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 4h10v5a5 5 0 01-10 0V4z"/><path d="M7 5H4a2 2 0 000 4h1.5"/><path d="M17 5h3a2 2 0 010 4h-1.5"/><path d="M12 14v4M8 21h8"/></svg>Challenges</button>
+    <button class="nav-item" data-go="sfu"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 3v6c0 5-3.4 9.1-8 11-4.6-1.9-8-6-8-11V5z"/></svg>SF Unicorns<span class="nav-new">New</span></button>
     <button class="nav-item" data-go="deals"><img class="nav-ic nav-ic-off" src="deal icon.png" alt=""><img class="nav-ic nav-ic-on" src="deal selected.png" alt="">Deals</button>
     <button class="nav-item" disabled aria-disabled="true"><img class="nav-ic" src="highlight icon.png" alt="">Highlights<span class="soon">Soon</span></button>
     <button class="nav-item" disabled aria-disabled="true"><img class="nav-ic" src="dugout icon.png" alt="">Dugout<span class="soon">Soon</span></button>
@@ -938,7 +987,7 @@ img{max-width:100%;display:block}
           <div class="switch"><button class="is-on" data-feed>Global pitch</button><button data-feed>For you</button></div>
 
           <!-- 10 posts -->
-          <article class="card post">
+          <article class="card post" data-club="sfu">
             <div class="post-flag">📌 Pinned post</div>
             <div class="post-head"><div class="avatar">SA</div><div class="post-id"><b>Sparkle Army HQ</b><span>2h ago · Oakland Coliseum</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">231 on the board and it still wasn't enough. Matt Short's 121 was the innings of the season and the Challenger still slipped away by seven runs. Season over — but this squad went to the top of the table and stayed there. #GoCorns</div>
@@ -982,7 +1031,7 @@ img{max-width:100%;display:block}
             </div>
           </article>
 
-          <article class="card post">
+          <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">CN</div><div class="post-id"><b>Champhunt News</b><span>1d ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Ravichandran Ashwin ruled out for the rest of MLC 2026 with a right knee injury. Peter Siddle approved as his replacement. Huge blow — Ashwin was the control bowler in the middle overs all season.</div>
             <div class="post-stats"><span class="runs-count"><b>210</b> Runs</span><span class="cmt-count" data-open-cmt>488 comments</span></div>
@@ -1003,7 +1052,7 @@ img{max-width:100%;display:block}
             </div>
           </article>
 
-          <article class="card post">
+          <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">NB</div><div class="post-id"><b>Neha Baisa</b><span>1d ago · San Jose, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Lhuan-dre Pretorius: 102* in a chase of 144, maiden T20 hundred, and he made it look like a net session. Remember where you saw it first.</div>
             <div class="post-media"><span class="cap">Pretorius 102* vs MI New York</span><img src="https://images.pexels.com/photos/37169804/pexels-photo-37169804.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter mid-swing on the pitch" style="object-position:center 35%"></div>
@@ -1025,7 +1074,7 @@ img{max-width:100%;display:block}
             </div>
           </article>
 
-          <article class="card post">
+          <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">US</div><div class="post-id"><b>Unicorns Sport Foundation</b><span>2d ago · Bay Area</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">We're live. The Foundation is now a 501(c)(3) public charity built to widen access to cricket for young people across the Bay Area. Free clinics start this month — coaches, gear and pitch time, no fee.</div>
             <div class="post-stats"><span class="runs-count"><b>300</b> Runs</span><span class="cmt-count" data-open-cmt>720 comments</span></div>
@@ -1046,7 +1095,7 @@ img{max-width:100%;display:block}
             </div>
           </article>
 
-          <article class="card post">
+          <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">DS</div><div class="post-id"><b>Dilip Singh</b><span>3d ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Finn Allen 65, Hassan Khan 36, Orcas knocked out, six-wicket win, top of the table going into the playoffs. That's how you close a regular season.</div>
             <div class="post-stats"><span class="runs-count"><b>120</b> Runs</span><span class="cmt-count" data-open-cmt>155 comments</span></div>
@@ -1131,7 +1180,7 @@ img{max-width:100%;display:block}
             </div>
           </article>
 
-          <article class="card post">
+          <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">MS</div><div class="post-id"><b>Merch Store</b><span>1w ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">End-of-season drop: playing jerseys down to $45 for the Sparkle Army. Redeem partly in runs on the Deals tab — the balance comes off at checkout.</div>
             <div class="post-stats"><span class="runs-count"><b>90</b> Runs</span><span class="cmt-count" data-open-cmt>88 comments</span></div>
@@ -1345,14 +1394,14 @@ img{max-width:100%;display:block}
               <div class="pool">Pool so far <b>96,000 runs</b> · 188 players in</div>
             </article>
 
-            <article class="card chal-card" data-status="live">
+            <article class="card chal-card" data-club="sfu" data-status="live">
               <div class="chal-top"><h3>Will the Sparkle Army fill the Coliseum lower bowl on opening night?</h3><span class="timer" data-countdown="18:14:30">⏱ 18h 14m left</span></div>
               <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
               <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
               <div class="pool">Pool so far <b>62,000 runs</b> · 118 players in</div>
             </article>
 
-            <article class="card chal-card" data-status="live">
+            <article class="card chal-card" data-club="sfu" data-status="live">
               <div class="chal-top"><h3>Will Matt Short captain the side again in 2027?</h3><span class="timer" data-countdown="120:00:00">⏱ 5d 0h 0m left</span></div>
               <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
               <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
@@ -1366,7 +1415,7 @@ img{max-width:100%;display:block}
               <div class="pool">Pool so far <b>74,800 runs</b> · 149 players in</div>
             </article>
 
-            <article class="card chal-card" data-status="live">
+            <article class="card chal-card" data-club="sfu" data-status="live">
               <div class="chal-top"><h3>Will the Unicorns beat Washington Freedom next time out?</h3><span class="timer" data-countdown="40:20:10">⏱ 1d 16h 20m left</span></div>
               <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
               <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
@@ -1380,7 +1429,7 @@ img{max-width:100%;display:block}
               <div class="pool">Pool so far <b>133,400 runs</b> · 265 players in</div>
             </article>
 
-            <article class="card chal-card" data-status="live">
+            <article class="card chal-card" data-club="sfu" data-status="live">
               <div class="chal-top"><h3>Will the Foundation's free clinics reach 1,000 kids this year?</h3><span class="timer" data-countdown="180:00:00">⏱ 7d 12h 0m left</span></div>
               <div class="yn"><button data-yn="Yes">Yes</button><button data-yn="No">No</button></div>
               <div class="chal-actions"><button class="btn btn--gate" data-join>Join challenge</button></div>
@@ -1616,6 +1665,48 @@ img{max-width:100%;display:block}
       </div>
     </section>
 
+    <!-- ==================================================== SFU CLUB SPACE -->
+    <section class="view" id="view-sfu">
+      <div class="club-hero">
+        <div class="club-top">
+          <div class="club-crest">SF</div>
+          <div class="club-id">
+            <div class="eyebrow">Official club space</div>
+            <h1>San Francisco Unicorns</h1>
+            <p>Everything Unicorns on Champhunt — club posts, club predictions, club rewards.</p>
+          </div>
+          <button class="btn btn--gate btn--sm" id="clubFollow">Follow club</button>
+        </div>
+        <div class="club-stats">
+          <div class="club-stat"><b>48.2K</b><span>Fans here</span></div>
+          <div class="club-stat"><b>MLC</b><span>Competition</span></div>
+          <div class="club-stat"><b>Oakland</b><span>Home</span></div>
+          <div class="club-stat"><b>2026</b><span>Season</span></div>
+        </div>
+      </div>
+
+      <div class="club-seg">
+        <button class="is-on" data-club-tab="pitch">Pitch</button>
+        <button data-club-tab="predictions">Predictions</button>
+        <button data-club-tab="challenges">Challenges</button>
+      </div>
+
+      <div id="clubPitch">
+        <p class="club-note">Only pitches from and about the Unicorns. Everything else stays on the Global Pitch.</p>
+        <div id="clubPitchList"></div>
+      </div>
+
+      <div id="clubPredictions" style="display:none">
+        <p class="club-note">Club questions only. Same rules as the Arena — stake 1,000 runs, take 1,500 back if you call it right.</p>
+        <div id="clubPredList"></div>
+      </div>
+
+      <div id="clubChallenges" style="display:none">
+        <p class="club-note">Unicorns challenges. Minimum 500 runs, winners split the pool minus the 10% house cut.</p>
+        <div id="clubChalList"></div>
+      </div>
+    </section>
+
   </main>
 </div>
 
@@ -1824,7 +1915,12 @@ img{max-width:100%;display:block}
     document.querySelectorAll('[data-go]').forEach(function(b){ b.classList.toggle('is-active', b.dataset.go === name); });
     window.scrollTo(0,0);
   }
-  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click', function(){ go(b.dataset.go); }); });
+  document.querySelectorAll('[data-go]').forEach(function(b){
+    b.addEventListener('click', function(){
+      if(b.dataset.go === 'sfu') buildClub();
+      go(b.dataset.go);
+    });
+  });
   document.querySelectorAll('[data-jump]').forEach(function(b){ b.addEventListener('click', function(e){ e.preventDefault(); go('predictions'); }); });
 
   function tabGroup(sel){
@@ -1998,7 +2094,7 @@ img{max-width:100%;display:block}
   jScrim.addEventListener('click', function(e){ if(e.target === jScrim) closeJoin(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeJoin(); });
 
-  document.querySelectorAll('.chal-card[data-status="live"]').forEach(function(card){
+  function wireChallenge(card){
     var btns = card.querySelectorAll('[data-yn]');
     btns.forEach(function(b){
       b.addEventListener('click', function(){
@@ -2013,6 +2109,90 @@ img{max-width:100%;display:block}
       if(!picked){ say('Pick a side first', 'Choose Yes or No, then set your stake.'); return; }
       openJoin(card, picked.dataset.yn);
     });
+  }
+  document.querySelectorAll('.chal-card[data-status="live"]').forEach(wireChallenge);
+
+  /* ---------- SF Unicorns club space ---------- */
+  var CLUB_PREDS = [
+    { q:'Will Matt Short score 50+ in the Unicorns\' opening fixture next season?',
+      a:'Yes, Short goes past fifty.', b:'No, he falls short.', pa:61, ai:'a' },
+    { q:'Will the Unicorns retain Finn Allen for the 2027 season?',
+      a:'Yes, he\'s retained.', b:'No, he moves on.', pa:72, ai:'a' },
+    { q:'Will the next Unicorns home game at the Coliseum draw more than 10,000 fans?',
+      a:'Yes, over 10,000.', b:'No, under 10,000.', pa:58, ai:'a' },
+    { q:'Will the Unicorns reach the MLC final in 2027?',
+      a:'Yes, they make the final.', b:'No, they fall short again.', pa:66, ai:'a' }
+  ];
+
+  var clubBuilt = false;
+  function buildClub(){
+    if(clubBuilt) return;
+    clubBuilt = true;
+
+    var pitchHost = document.getElementById('clubPitchList');
+    document.querySelectorAll('.post[data-club="sfu"]').forEach(function(orig){
+      var copy = orig.cloneNode(true);
+      copy.removeAttribute('data-club');
+      copy.style.marginBottom = '16px';
+      pitchHost.appendChild(copy);
+      wirePost(copy);
+      wireFollow(copy);
+    });
+
+    var predHost = document.getElementById('clubPredList');
+    CLUB_PREDS.forEach(function(p){
+      var card = document.createElement('article');
+      card.className = 'card cp-card';
+      card.innerHTML = '<h3>' + p.q + '</h3>' +
+        '<div class="cp-opts">' +
+          '<button class="cp-opt" data-side="a">' + p.a + (p.ai === 'a' ? ' <span class="tag-ai">🤖 AI\'s choice</span>' : '') + '<em>−1,000</em></button>' +
+          '<button class="cp-opt" data-side="b">' + p.b + (p.ai === 'b' ? ' <span class="tag-ai">🤖 AI\'s choice</span>' : '') + '<em>−1,000</em></button>' +
+        '</div>' +
+        '<div class="cp-foot"><span>Yes ' + p.pa + '% · No ' + (100 - p.pa) + '%</span><span class="cp-state">No pick yet</span></div>';
+      predHost.appendChild(card);
+
+      var opts = card.querySelectorAll('.cp-opt'), state = card.querySelector('.cp-state');
+      opts.forEach(function(o){
+        o.addEventListener('click', function(){
+          if(card.dataset.done) return;
+          if(balance < 1000){ say('Not enough runs', 'A prediction costs 1,000 runs to enter.'); return; }
+          card.dataset.done = '1';
+          opts.forEach(function(x){ x.classList.remove('is-picked'); });
+          o.classList.add('is-picked');
+          applyRuns(-1000, 'Prediction Entry', 'Unicorns club prediction');
+          state.textContent = 'Picked · 1,000 runs staked';
+          say('Prediction locked in', '1,000 runs staked. New balance ' + fmt(balance) + '.');
+        });
+      });
+    });
+
+    var chalHost = document.getElementById('clubChalList');
+    document.querySelectorAll('.chal-card[data-club="sfu"]').forEach(function(orig){
+      var copy = orig.cloneNode(true);
+      copy.removeAttribute('data-club');
+      copy.style.marginBottom = '14px';
+      chalHost.appendChild(copy);
+      wireChallenge(copy);
+    });
+  }
+
+  var clubTabs = document.querySelectorAll('[data-club-tab]');
+  var clubPanes = { pitch:'clubPitch', predictions:'clubPredictions', challenges:'clubChallenges' };
+  clubTabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      clubTabs.forEach(function(o){ o.classList.remove('is-on'); });
+      t.classList.add('is-on');
+      Object.keys(clubPanes).forEach(function(k){
+        document.getElementById(clubPanes[k]).style.display = (k === t.dataset.clubTab) ? '' : 'none';
+      });
+    });
+  });
+  document.getElementById('clubFollow').addEventListener('click', function(){
+    var on = this.classList.toggle('is-following');
+    this.textContent = on ? '✓ Following club' : 'Follow club';
+    this.className = on ? 'btn btn--ghost btn--sm is-following' : 'btn btn--gate btn--sm';
+    say(on ? 'Following the Unicorns' : 'Unfollowed the Unicorns',
+        on ? 'Club posts now show up on your Global Pitch too.' : 'Club posts removed from your feed.');
   });
 
   joinConfirm.addEventListener('click', function(){
