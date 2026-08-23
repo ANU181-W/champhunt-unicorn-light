@@ -80,9 +80,7 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;gap:20px;padding:0 22px;color:#fff;
 }
 .brand{display:flex;align-items:center;gap:11px;min-width:calc(var(--sidebar) - 22px)}
-.brand-mark{width:36px;height:36px;flex:none;display:block;object-fit:contain}
-.brand-txt small{display:block;font-family:var(--f-label);font-weight:700;font-size:10px;letter-spacing:.26em;color:var(--bay)}
-.brand-txt b{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:21px;text-transform:uppercase;letter-spacing:.01em}
+.brand-logo{height:38px;width:auto;flex:none;object-fit:contain;display:block}
 .search{flex:1;max-width:460px;position:relative}
 .search input{
   width:100%;height:38px;padding:0 14px 0 38px;border-radius:4px;
@@ -198,10 +196,14 @@ img{max-width:100%;display:block}
   display:grid;place-items:center;width:68px;height:68px;margin:0 auto 7px;border-radius:50%;
   background:linear-gradient(150deg,#16304F,#0B1D35);border:3px solid var(--gate);position:relative;
   font-family:var(--f-display);font-style:italic;font-weight:800;font-size:22px;color:transparent;
+  transition:transform .18s ease,box-shadow .18s ease;
 }
 .story--add i{background:var(--haze);border:2px dashed var(--line);color:var(--slate)}
 .story--add i::after,.story i.has-img::after{content:none}
-.story span{font-family:var(--f-label);font-size:12px;color:var(--slate);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.story:hover i{transform:scale(1.07);box-shadow:0 6px 16px -6px rgba(19,43,74,.5)}
+.story--add:hover i{transform:none;border-color:var(--gate);box-shadow:none}
+.story span{font-family:var(--f-label);font-size:12px;color:var(--slate);display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;transition:color .15s ease}
+.story:hover span{color:var(--navy)}
 
 .hero{margin-bottom:16px}
 .hero-shot{
@@ -275,7 +277,8 @@ img{max-width:100%;display:block}
 .switch button{flex:1;padding:13px;font-family:var(--f-label);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.14em;color:var(--slate);border-bottom:3px solid transparent}
 .switch button.is-on{color:var(--navy);border-bottom-color:var(--gate);background:var(--haze)}
 
-.post{margin-bottom:16px;overflow:hidden}
+.post{margin-bottom:16px;overflow:hidden;transition:box-shadow .18s ease,border-color .18s ease}
+.post:hover{border-color:#C8D5E4;box-shadow:0 10px 24px -16px rgba(19,43,74,.35)}
 .post-flag{display:flex;align-items:center;gap:8px;padding:9px 16px;background:linear-gradient(90deg,rgba(244,104,31,.14),transparent);border-bottom:1px solid var(--line);font-family:var(--f-label);font-weight:700;font-size:11.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--gate)}
 .post-head{display:flex;align-items:center;gap:12px;padding:15px 16px}
 .post-head .avatar{width:42px;height:42px;font-size:15px}
@@ -399,7 +402,8 @@ img{max-width:100%;display:block}
 .pf-empty{padding:38px 16px;text-align:center;color:var(--slate)}
 .pymk{padding:16px}
 .pymk h3{font-family:var(--f-label);font-weight:700;font-size:14.5px;color:var(--navy);margin-bottom:12px}
-.pymk-row{display:flex;align-items:center;gap:10px;padding:9px 0}
+.pymk-row{display:flex;align-items:center;gap:10px;padding:9px 6px;margin:0 -6px;border-radius:6px;transition:background .15s ease}
+.pymk-row:hover{background:var(--haze)}
 .pymk-row .avatar{width:34px;height:34px;font-size:13px;flex:none}
 .pymk-id{flex:1;min-width:0}
 .pymk-id b{display:block;font-family:var(--f-label);font-weight:700;font-size:13.5px;color:var(--navy);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -441,7 +445,8 @@ img{max-width:100%;display:block}
 .tx-head h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:17px;text-transform:uppercase;color:var(--navy)}
 .tx-head small{font-family:var(--f-data);font-size:12px;color:var(--slate)}
 .tx-day{padding:11px 16px 7px;font-family:var(--f-label);font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);background:var(--haze)}
-.tx{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.tx{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);transition:background .15s ease}
+.tx:hover{background:var(--haze)}
 .tx:last-child{border-bottom:none}
 .tx-ic{width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:6px;font-size:15px}
 .tx-ic.earn{background:rgba(18,160,107,.13);color:var(--win)}
@@ -528,7 +533,8 @@ img{max-width:100%;display:block}
 .rail-foot{padding:11px 16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .rail-foot span{font-size:12px;color:var(--slate)}
 .rail-foot a{font-family:var(--f-label);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gate)}
-.lb-row{display:flex;align-items:center;gap:11px;padding:10px 16px;border-bottom:1px solid var(--line)}
+.lb-row{display:flex;align-items:center;gap:11px;padding:10px 16px;border-bottom:1px solid var(--line);transition:background .15s ease}
+.lb-row:hover{background:var(--haze)}
 .lb-row:last-child{border-bottom:none}
 .lb-rank{width:23px;height:23px;flex:none;display:grid;place-items:center;border-radius:3px;background:var(--haze);color:var(--slate);font-family:var(--f-data);font-weight:600;font-size:12px}
 .lb-row:nth-child(2) .lb-rank{background:var(--gate);color:#fff}
@@ -613,7 +619,8 @@ img{max-width:100%;display:block}
 .chal-banner h2{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:30px;text-transform:uppercase;line-height:1}
 .chal-banner p{font-family:var(--f-label);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:#9FC0DC}
 .chal-list{display:flex;flex-direction:column;gap:14px}
-.chal-card{padding:20px}
+.chal-card{padding:20px;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.chal-card:hover{transform:translateY(-3px);border-color:var(--bay);box-shadow:0 16px 30px -18px rgba(19,43,74,.4)}
 .chal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:16px}
 .chal-card h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:20px;text-transform:uppercase;color:var(--navy);line-height:1.12;max-width:36ch}
 .timer{display:inline-flex;align-items:center;gap:6px;flex:none;padding:5px 10px;border:1px solid var(--line);border-radius:3px;font-family:var(--f-data);font-size:12px;color:var(--bay)}
@@ -698,9 +705,11 @@ img{max-width:100%;display:block}
 .deal-hero p{color:#3F5670;margin-top:9px;max-width:54ch}
 .deal-hero .stripe{width:170px;margin-top:16px;border-radius:2px}
 .deal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:18px}
-.deal{display:flex;flex-direction:column;overflow:hidden}
+.deal{display:flex;flex-direction:column;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.deal:hover{transform:translateY(-4px);border-color:var(--gate);box-shadow:0 16px 30px -18px rgba(19,43,74,.45)}
 .deal-img{position:relative;height:142px;background:var(--haze);border-bottom:1px solid var(--line);display:grid;place-items:center;padding:16px;text-align:center}
-.deal-logo{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:22px;text-transform:uppercase;color:var(--navy);letter-spacing:.01em}
+.deal-logo{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:22px;text-transform:uppercase;color:var(--navy);letter-spacing:.01em;transition:transform .18s ease}
+.deal:hover .deal-logo{transform:scale(1.06)}
 .deal-kind{display:block;font-family:var(--f-label);font-weight:700;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--slate);margin-top:5px}
 .badge{position:absolute;top:9px;left:9px;padding:4px 9px;border-radius:3px;font-family:var(--f-label);font-weight:700;font-size:10px;text-transform:uppercase;letter-spacing:.12em}
 .badge--us{background:var(--bay);color:#fff}
@@ -773,12 +782,6 @@ img{max-width:100%;display:block}
   .spay-left{border-right:none;border-bottom:1px solid #E6EBF1}
 }
 
-/* partner strip */
-.partners{margin-top:34px;padding-top:26px;border-top:1px solid var(--line);text-align:center}
-.partners h3{font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;font-size:17px;text-transform:uppercase;color:var(--navy);letter-spacing:.02em;margin-bottom:18px}
-.partner-row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 40px;margin-bottom:28px}
-.partner-row span{font-family:var(--f-label);font-weight:700;font-size:16px;letter-spacing:.06em;color:#7B8FA6;text-transform:uppercase}
-
 /* ============================================================ RESPONSIVE */
 .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(19,43,74,.09)}
 .mobile-nav button{flex:1;padding:10px 3px;font-family:var(--f-label);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);border-top:3px solid transparent}
@@ -789,7 +792,7 @@ img{max-width:100%;display:block}
   :root{--sidebar:0px}
   .sidebar{display:none}
   .brand{min-width:auto}
-  .brand-txt small{display:none}
+  .brand-logo{height:30px}
   .search{display:none}
   .main{padding:18px 15px 84px}
   .mobile-nav{display:flex}
@@ -841,8 +844,7 @@ img{max-width:100%;display:block}
 <!-- ===================== TOP BAR ===================== -->
 <header class="topbar">
   <div class="brand">
-    <img class="brand-mark" src="champhunt-mark.png" alt="Champhunt">
-    <div class="brand-txt"><small>Cheer loud, earn louder</small><b>Champhunt</b></div>
+    <img class="brand-logo" src="champhunt-lockup.png" alt="Champhunt — Cheer loud, earn louder">
   </div>
   <div class="search">
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
@@ -1601,13 +1603,6 @@ img{max-width:100%;display:block}
           <div class="deal-img"><span class="badge badge--us">US only</span><div><span class="deal-logo">Truefoundry</span><span class="deal-kind">Student credits</span></div></div>
           <div class="deal-body"><h4>Student GPU credit pack</h4><p class="desc">Claimed 12 July. Redemption code sent to your registered email.</p><div class="deal-price"><b>Redeemed</b></div><button class="btn btn--ghost" disabled>Redeemed 12 Jul</button></div>
         </article>
-      </div>
-
-      <div class="partners">
-        <h3>Official partners</h3>
-        <div class="partner-row"><span>nttvc</span><span>Temporal</span><span>Royal</span><span>Persistent</span><span>Hexaware</span><span>Toyota</span><span>Lyzr</span><span>Truefoundry</span></div>
-        <h3>Supporting partners</h3>
-        <div class="partner-row"><span>Bartable</span><span>Radio Zindagi</span><span>Aspire Cricket</span><span>Cricket Victoria</span></div>
       </div>
     </section>
 
