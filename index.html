@@ -104,7 +104,14 @@ img{max-width:100%;display:block}
   content:"";position:absolute;inset:0;border-radius:50%;
   background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath fill-rule='evenodd' d='M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z' clip-rule='evenodd'/%3E%3C/svg%3E") no-repeat center/56% 56%;
 }
-.avatar-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:1}
+.avatar-photo{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:50%;z-index:1;
+  opacity:0;transition:opacity .35s ease;
+  background:linear-gradient(100deg,var(--haze) 30%,#EDF2F8 50%,var(--haze) 70%);background-size:220% 100%;
+  animation:avatarShimmer 1.3s ease-in-out infinite;
+}
+.avatar-photo.is-loaded{opacity:1;animation:none;background:none}
+@keyframes avatarShimmer{0%{background-position:120% 0}100%{background-position:-20% 0}}
 
 /* ============================================================ SHELL */
 .shell{display:flex;align-items:flex-start;min-height:calc(100vh - var(--topbar))}
@@ -117,8 +124,10 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;gap:12px;width:100%;padding:11px 12px;margin-bottom:2px;
   font-family:var(--f-label);font-weight:700;font-size:15px;text-transform:uppercase;
   letter-spacing:.07em;color:var(--slate);border-left:3px solid transparent;text-align:left;
+  transition:background .15s,color .15s,border-color .15s;
 }
 .nav-item:hover{background:var(--haze);color:var(--navy)}
+.nav-item:active:not([disabled]){background:var(--haze)}
 .nav-item.is-active{background:var(--haze);color:var(--navy);border-left-color:var(--gate)}
 .nav-item.is-active svg{color:var(--gate)}
 .nav-ic{width:17px;height:17px;flex:none;object-fit:contain}
@@ -146,6 +155,8 @@ img{max-width:100%;display:block}
 .view{display:none}
 .view.is-active{display:block;animation:rise .26s ease-out}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.stagger-in{animation:cardIn .42s cubic-bezier(.2,.7,.3,1) both}
 
 .page-head{margin-bottom:20px}
 .page-head .brush{font-size:30px;margin-bottom:2px}
@@ -161,8 +172,9 @@ img{max-width:100%;display:block}
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   padding:11px 22px;border-radius:3px;
   font-family:var(--f-label);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.12em;
-  transition:background .15s,color .15s,border-color .15s;
+  transition:background .15s,color .15s,border-color .15s,transform .1s ease;
 }
+.btn:active:not([disabled]){transform:scale(.96)}
 .btn--gate{background:var(--gate);color:#fff}
 .btn--gate:hover{background:var(--gate-hot)}
 .btn--navy{background:var(--navy);color:#fff}
@@ -687,7 +699,7 @@ img{max-width:100%;display:block}
 .club-stat b{display:block;font-family:var(--f-data);font-weight:600;font-size:18px;color:var(--gate)}
 .club-stat span{font-family:var(--f-label);font-weight:700;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#A9C2D8}
 .club-seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--paper);margin-bottom:18px}
-.club-seg button{padding:12px 6px;font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate)}
+.club-seg button{padding:12px 4px;font-family:var(--f-label);font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--slate);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .club-seg button:hover{background:var(--haze);color:var(--navy)}
 .club-seg button.is-on{background:var(--gate);color:#fff}
 .club-note{font-size:13.5px;color:var(--slate);margin-bottom:14px}
@@ -703,11 +715,11 @@ img{max-width:100%;display:block}
 .cp-opt.is-picked{border-color:var(--gate);background:rgba(244,104,31,.07)}
 .cp-opt em{font-style:normal;font-family:var(--f-data);font-size:12px;color:var(--gate)}
 .cp-foot{display:flex;justify-content:space-between;gap:12px;margin-top:12px;font-family:var(--f-data);font-size:12px;color:var(--slate)}
-@media (max-width:640px){ .club-seg{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:480px){ .club-seg button{font-size:11px;letter-spacing:.04em;padding:11px 2px} }
 
 /* toast — sits clear of the runs chip, never off-screen */
 .toast{
-  position:fixed;right:22px;bottom:22px;z-index:120;
+  position:fixed;right:22px;bottom:22px;z-index:120;pointer-events:none;
   display:flex;align-items:flex-start;gap:11px;
   width:min(340px,calc(100vw - 32px));padding:13px 15px;border-radius:8px;
   background:var(--navy);color:#fff;box-shadow:0 12px 30px -12px rgba(11,29,53,.6);
@@ -841,9 +853,17 @@ img{max-width:100%;display:block}
 }
 
 /* ============================================================ RESPONSIVE */
-.mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--paper);border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(19,43,74,.09)}
-.mobile-nav button{flex:1;padding:10px 3px;font-family:var(--f-label);font-weight:700;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--slate);border-top:3px solid transparent}
+.mobile-nav{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:70;background:var(--paper);
+  border-top:1px solid var(--line);box-shadow:0 -4px 18px rgba(19,43,74,.09);
+  overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+.mobile-nav button{
+  flex:1 0 auto;min-width:62px;padding:10px 8px;font-family:var(--f-label);font-weight:700;font-size:10.5px;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--slate);border-top:3px solid transparent;white-space:nowrap;
+}
 .mobile-nav button.is-active{color:var(--gate);border-top-color:var(--gate)}
+.mobile-nav button[disabled]{opacity:.42}
 
 @media (max-width:1180px){ .grid-rail{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:900px){
@@ -991,7 +1011,7 @@ img{max-width:100%;display:block}
             <div class="post-flag">📌 Pinned post</div>
             <div class="post-head"><div class="avatar">SA</div><div class="post-id"><b>Sparkle Army HQ</b><span>2h ago · Oakland Coliseum</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">231 on the board and it still wasn't enough. Matt Short's 121 was the innings of the season and the Challenger still slipped away by seven runs. Season over — but this squad went to the top of the table and stayed there. #GoCorns</div>
-            <div class="post-media"><span class="cap">Short 121 vs Washington Freedom</span><img src="https://images.pexels.com/photos/30387494/pexels-photo-30387494.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter connecting with the ball mid-shot"></div>
+            <div class="post-media"><span class="cap">Short 121 vs Washington Freedom</span><img src="	https://images.pexels.com/photos/34563722/pexels-photo-34563722.png?auto=compress&cs=tinysrgb&w=800" alt="Batter connecting with the ball mid-shot"></div>
             <div class="post-stats"><span class="runs-count"><b>250</b> Runs</span><span class="cmt-count" data-open-cmt>612 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1013,6 +1033,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">RK</div><div class="post-id"><b>Ravi Kulkarni</b><span>6h ago · Fremont, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">94* off a chase that was never on, against Andre Russell in his 600th T20. Matt Short in playoff cricket is a different player. Who else is putting him in their 2027 retention XI?</div>
+            <div class="post-media"><span class="cap">94* off 61 vs Andre Russell</span><img src="https://images.pexels.com/photos/31723741/pexels-photo-31723741.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter and bowler mid-delivery on the pitch" style="object-position:center 30%"></div>
             <div class="post-stats"><span class="runs-count"><b>180</b> Runs</span><span class="cmt-count" data-open-cmt>240 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1034,6 +1055,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">CN</div><div class="post-id"><b>Champhunt News</b><span>1d ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Ravichandran Ashwin ruled out for the rest of MLC 2026 with a right knee injury. Peter Siddle approved as his replacement. Huge blow — Ashwin was the control bowler in the middle overs all season.</div>
+            <div class="post-media"><span class="cap">MLC 2026 · Injury update</span><img src="https://images.pexels.com/photos/29881319/pexels-photo-29881319.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Empty stadium ahead of matchday"></div>
             <div class="post-stats"><span class="runs-count"><b>210</b> Runs</span><span class="cmt-count" data-open-cmt>488 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1055,7 +1077,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">NB</div><div class="post-id"><b>Neha Baisa</b><span>1d ago · San Jose, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Lhuan-dre Pretorius: 102* in a chase of 144, maiden T20 hundred, and he made it look like a net session. Remember where you saw it first.</div>
-            <div class="post-media"><span class="cap">Pretorius 102* vs MI New York</span><img src="https://images.pexels.com/photos/37169804/pexels-photo-37169804.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter mid-swing on the pitch" style="object-position:center 35%"></div>
+            <div class="post-media"><span class="cap">Pretorius 102* vs MI New York</span><img src="https://images.pexels.com/photos/35801178/pexels-photo-35801178.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter ready at the crease, dramatic lighting" style="object-position:center 25%"></div>
             <div class="post-stats"><span class="runs-count"><b>160</b> Runs</span><span class="cmt-count" data-open-cmt>301 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1077,6 +1099,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">US</div><div class="post-id"><b>Unicorns Sport Foundation</b><span>2d ago · Bay Area</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">We're live. The Foundation is now a 501(c)(3) public charity built to widen access to cricket for young people across the Bay Area. Free clinics start this month — coaches, gear and pitch time, no fee.</div>
+            <div class="post-media"><span class="cap">Free youth clinics · Bay Area</span><img src="https://images.pexels.com/photos/34563722/pexels-photo-34563722.png?auto=compress&cs=tinysrgb&w=800" alt="Cricket ball resting on dewy grass"></div>
             <div class="post-stats"><span class="runs-count"><b>300</b> Runs</span><span class="cmt-count" data-open-cmt>720 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1098,6 +1121,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">DS</div><div class="post-id"><b>Dilip Singh</b><span>3d ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Finn Allen 65, Hassan Khan 36, Orcas knocked out, six-wicket win, top of the table going into the playoffs. That's how you close a regular season.</div>
+            <div class="post-media"><span class="cap">Unicorns close the regular season top of the table</span><img src="https://images.pexels.com/photos/36230651/pexels-photo-36230651.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Packed stadium under floodlights at night"></div>
             <div class="post-stats"><span class="runs-count"><b>120</b> Runs</span><span class="cmt-count" data-open-cmt>155 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1119,6 +1143,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">AM</div><div class="post-id"><b>Aisha Mehta</b><span>4d ago · Oakland, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Sanjay Krishnamurthi is the story nobody outside the Bay is telling. 57 in the playoff, 48 in the chase before that. Homegrown USA batter carrying a top order full of internationals.</div>
+            <div class="post-media"><span class="cap">57 in the playoff for the homegrown talisman</span><img src="https://images.pexels.com/photos/31739439/pexels-photo-31739439.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Wide stadium view over the pitch"></div>
             <div class="post-stats"><span class="runs-count"><b>140</b> Runs</span><span class="cmt-count" data-open-cmt>268 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1162,6 +1187,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">HR</div><div class="post-id"><b>Haris Rauf Fan Club</b><span>6d ago</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Rauf's second spell under lights is the best ten minutes of cricket in this league. Speed gun doesn't drop, the bouncer still comes, and batters start looking at the pavilion. Predict his next-match wickets in the Arena.</div>
+            <div class="post-media"><span class="cap">Rauf's second spell under the lights</span><img src="https://images.pexels.com/photos/29047136/pexels-photo-29047136.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bowler mid-air delivering under floodlights" style="object-position:center 20%"></div>
             <div class="post-stats"><span class="runs-count"><b>130</b> Runs</span><span class="cmt-count" data-open-cmt>199 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1714,6 +1740,7 @@ img{max-width:100%;display:block}
   <button class="is-active" data-go="pitch">Pitch</button>
   <button data-go="predictions">Predict</button>
   <button data-go="challenges">Challenge</button>
+  <button data-go="sfu">Unicorns</button>
   <button data-go="deals">Deals</button>
 </nav>
 
@@ -1914,6 +1941,17 @@ img{max-width:100%;display:block}
     views.forEach(function(v){ v.classList.toggle('is-active', v.id === 'view-' + name); });
     document.querySelectorAll('[data-go]').forEach(function(b){ b.classList.toggle('is-active', b.dataset.go === name); });
     window.scrollTo(0,0);
+    staggerReveal(document.getElementById('view-' + name));
+  }
+  function staggerReveal(view){
+    if(!view) return;
+    var items = view.querySelectorAll('.post, .pred-card, .chal-card, .deal, .cp-card');
+    items.forEach(function(el, i){
+      el.classList.remove('stagger-in');
+      void el.offsetWidth;
+      el.style.animationDelay = (Math.min(i, 9) * 45) + 'ms';
+      el.classList.add('stagger-in');
+    });
   }
   document.querySelectorAll('[data-go]').forEach(function(b){
     b.addEventListener('click', function(){
@@ -2185,6 +2223,7 @@ img{max-width:100%;display:block}
       Object.keys(clubPanes).forEach(function(k){
         document.getElementById(clubPanes[k]).style.display = (k === t.dataset.clubTab) ? '' : 'none';
       });
+      staggerReveal(document.getElementById(clubPanes[t.dataset.clubTab]));
     });
   });
   document.getElementById('clubFollow').addEventListener('click', function(){
@@ -2412,6 +2451,7 @@ img{max-width:100%;display:block}
         deals.forEach(function(d){
           d.style.display = (f === 'all' || d.dataset.state === f) ? '' : 'none';
         });
+        staggerReveal(document.getElementById('view-deals'));
       });
     });
   })();
@@ -2880,12 +2920,15 @@ img{max-width:100%;display:block}
     if (el.closest('.story--add') || el.classList.contains('has-img')) return;
     el.dataset.avatarPainted = '1';
     var key = directText(el) || el.id || 'x';
-    var n = (hashCode(key) % 70) + 1;
+    var h = hashCode(key);
+    var gender = (h % 2 === 0) ? 'men' : 'women';
+    var n = Math.floor(h / 2) % 100;
     var img = document.createElement('img');
     img.className = 'avatar-photo';
     img.alt = '';
     img.loading = 'lazy';
-    img.src = 'https://i.pravatar.cc/150?img=' + n;
+    img.src = 'https://randomuser.me/api/portraits/' + gender + '/' + n + '.jpg';
+    img.addEventListener('load', function(){ img.classList.add('is-loaded'); });
     img.addEventListener('error', function(){ img.remove(); });
     el.insertBefore(img, el.firstChild);
   }
