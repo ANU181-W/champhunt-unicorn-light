@@ -305,14 +305,6 @@ img{max-width:100%;display:block}
 }
 .post-media img{max-width:100%;max-height:480px;width:auto;height:auto;display:block}
 .post-media .fig{width:150px;color:var(--gate);opacity:.95;position:absolute;left:50%;bottom:0;transform:translateX(-50%)}
-.post-media::after{
-  content:"";position:absolute;left:0;right:0;top:0;height:58%;pointer-events:none;
-  background:linear-gradient(to bottom,rgba(11,29,53,.72),rgba(11,29,53,0));
-}
-.post-media .cap{
-  position:absolute;left:14px;top:12px;z-index:1;font-family:var(--f-display);font-style:italic;font-weight:800;font-stretch:88%;
-  font-size:19px;text-transform:uppercase;color:#fff;max-width:70%;line-height:1.1;
-}
 .post-stats{
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   padding:9px 16px;border-top:1px solid var(--line);
@@ -506,7 +498,6 @@ img{max-width:100%;display:block}
 .quote-head span{font-family:var(--f-data);font-size:11px;color:var(--slate)}
 .quote p{padding:0 13px 11px;font-size:13.5px;line-height:1.45;color:#3F5670}
 .quote .post-media{height:130px;margin:0 13px 13px;border-radius:6px}
-.quote .post-media .cap{font-size:14px}
 .quote .post-media .fig{width:90px}
 .rp-foot{display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
 .rp-foot small{flex:1;font-size:12.5px;color:var(--slate)}
@@ -1030,7 +1021,7 @@ img{max-width:100%;display:block}
             <div class="post-flag">📌 Pinned post</div>
             <div class="post-head"><div class="avatar">SA</div><div class="post-id"><b>Sparkle Army HQ</b><span>2h ago · Oakland Coliseum</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Seven runs. SEVEN. I have been staring at the ceiling since midnight. Short gave us 121 and we still could not get over the line — but nobody in that stand sat down for the last four overs. Proud of this lot, season over or not. 🧡</div>
-            <div class="post-media"><span class="cap">Short 121 vs Washington Freedom</span><img src="posts/post-1.jpeg" alt="Sparkle Army fans waving orange flags in the stands"></div>
+            <div class="post-media"><img src="posts/post-1.jpeg" alt="Sparkle Army fans waving orange flags in the stands"></div>
             <div class="post-stats"><span class="runs-count"><b>250</b> Runs</span><span class="cmt-count" data-open-cmt>612 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1051,7 +1042,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">RK</div><div class="post-id"><b>Ravi Kulkarni</b><span>6h ago · Fremont, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">94* off a chase that was never on, against Andre Russell in his 600th T20. Matt Short in playoff cricket is a different player. Who else is putting him in their 2027 retention XI?</div>
-            <div class="post-media"><span class="cap">94* off 61 vs Andre Russell</span><img src="posts/post-2.jpeg" alt="Unicorns players celebrating a wicket on the field"></div>
+            <div class="post-media"><img src="posts/post-2.jpeg" alt="Unicorns players celebrating a wicket on the field"></div>
             <div class="post-stats"><span class="runs-count"><b>180</b> Runs</span><span class="cmt-count" data-open-cmt>240 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1073,7 +1064,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">KR</div><div class="post-id"><b>Karthik R</b><span>1d ago · San Jose, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Woke up to the Ashwin news and my whole day is ruined. He was the one holding the middle overs together. Siddle coming in is fine but that is a completely different plan now. Gutted for him more than for us honestly.</div>
-            <div class="post-media"><span class="cap">MLC 2026 · Injury update</span><img src="posts/post-3.jpeg" alt="Unicorns players huddled together on the field at night"></div>
+            <div class="post-media"><img src="posts/post-3.jpeg" alt="Unicorns players huddled together on the field at night"></div>
             <div class="post-stats"><span class="runs-count"><b>210</b> Runs</span><span class="cmt-count" data-open-cmt>488 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1094,7 +1085,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">NB</div><div class="post-id"><b>Neha Baisa</b><span>1d ago · San Jose, CA</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
             <div class="post-body">I screamed so loud my neighbour knocked. 102 not out, first T20 hundred, and he made a 144 chase look like a knock in the park. Remember where you saw Pretorius first, please.</div>
-            <div class="post-media"><span class="cap">Pretorius 102* vs MI New York</span><img src="posts/post-4.jpeg" alt="Pretorius greeting fans at the boundary after his innings"></div>
+            <div class="post-media"><img src="posts/post-4.jpeg" alt="Pretorius greeting fans at the boundary after his innings"></div>
             <div class="post-stats"><span class="runs-count"><b>160</b> Runs</span><span class="cmt-count" data-open-cmt>301 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1115,7 +1106,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">PM</div><div class="post-id"><b>Priya M</b><span>2d ago · Fremont, CA</span></div><button class="btn btn--gate btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Took my daughter to the free Foundation clinic this weekend. Real coaches, real gear, zero fee, and she has not put the bat down since. Whoever pushed this through at the club — thank you.</div>
-            <div class="post-media"><span class="cap">Free youth clinics · Bay Area</span><img src="posts/post-5.jpeg" alt="Sparkle Army fans in the stands waving Unicorns flags"></div>
+            <div class="post-media"><img src="posts/post-5.jpeg" alt="Sparkle Army fans in the stands waving Unicorns flags"></div>
             <div class="post-stats"><span class="runs-count"><b>300</b> Runs</span><span class="cmt-count" data-open-cmt>720 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1136,7 +1127,7 @@ img{max-width:100%;display:block}
           <article class="card post" data-club="sfu">
             <div class="post-head"><div class="avatar">DS</div><div class="post-id"><b>Dilip Singh</b><span>3d ago · Oakland, CA</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Allen 65, Hassan 36, Orcas sent home, and we go into the playoffs top of the table. I have watched this team lose in worse ways than they won today, so let me enjoy this one.</div>
-            <div class="post-media"><span class="cap">Unicorns close the regular season top of the table</span><img src="posts/post-6.jpeg" alt="Fans wearing Unicorns merch, including a Hassan jersey"></div>
+            <div class="post-media"><img src="posts/post-6.jpeg" alt="Fans wearing Unicorns merch, including a Hassan jersey"></div>
             <div class="post-stats"><span class="runs-count"><b>120</b> Runs</span><span class="cmt-count" data-open-cmt>155 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1157,7 +1148,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">AM</div><div class="post-id"><b>Aisha Mehta</b><span>4d ago · Oakland, CA</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Sanjay Krishnamurthi is the story nobody outside the Bay is telling. 57 in the playoff, 48 in the chase before that. Homegrown USA batter carrying a top order full of internationals.</div>
-            <div class="post-media"><span class="cap">57 in the playoff for the homegrown talisman</span><img src="https://images.pexels.com/photos/4770720/pexels-photo-4770720.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter connecting with the ball, dust flying"></div>
+            <div class="post-media"><img src="https://images.pexels.com/photos/4770720/pexels-photo-4770720.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Batter connecting with the ball, dust flying"></div>
             <div class="post-stats"><span class="runs-count"><b>140</b> Runs</span><span class="cmt-count" data-open-cmt>268 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1179,7 +1170,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">JP</div><div class="post-id"><b>Jay Patel</b><span>5d ago · BART, Coliseum stn</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Coliseum on a matchday: full lower bowl, drums going from over three, the whole Sparkle Army in orange. Take BART, skip the parking, thank me later.</div>
-            <div class="post-media"><span class="cap">Matchday at the Coliseum</span><img src="https://images.pexels.com/photos/28759001/pexels-photo-28759001.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bowler mid-delivery on matchday"></div>
+            <div class="post-media"><img src="https://images.pexels.com/photos/28759001/pexels-photo-28759001.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bowler mid-delivery on matchday"></div>
             <div class="post-stats"><span class="runs-count"><b>220</b> Runs</span><span class="cmt-count" data-open-cmt>402 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
@@ -1201,7 +1192,7 @@ img{max-width:100%;display:block}
           <article class="card post">
             <div class="post-head"><div class="avatar">HR</div><div class="post-id"><b>Haris Rauf Fan Club</b><span>6d ago</span></div><button class="btn btn--ghost btn--sm" data-follow>Follow</button></div>
             <div class="post-body">Rauf's second spell under lights is the best ten minutes of cricket in this league. Speed gun doesn't drop, the bouncer still comes, and batters start looking at the pavilion. Predict his next-match wickets in the Arena.</div>
-            <div class="post-media"><span class="cap">Rauf's second spell under the lights</span><img src="https://images.pexels.com/photos/29047136/pexels-photo-29047136.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bowler mid-air delivering under floodlights"></div>
+            <div class="post-media"><img src="https://images.pexels.com/photos/29047136/pexels-photo-29047136.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Bowler mid-air delivering under floodlights"></div>
             <div class="post-stats"><span class="runs-count"><b>130</b> Runs</span><span class="cmt-count" data-open-cmt>199 comments</span></div>
             <div class="post-comments">
               <div class="cmt-compose"><span class="avatar">SK</span><input type="text" placeholder="Write a comment…" aria-label="Write a comment"></div>
